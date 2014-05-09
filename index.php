@@ -8,18 +8,38 @@ ob_start();
 	include_once 'inc/inc_header.php';
 	?>
 	<body>
+		<nav>
+			<div class="navButton left" id="btnAttendance">
+				Teilnahme
+			</div>
+			<div class="navButton left" id="btnProvision">
+				Versorgung
+			</div>
+			<div class="navButton left" id="btnLocation">
+				Anfahrt
+			</div>
+			<div class="navButton left" id="btnAccommodation">
+				Unterbringung
+			</div>
+			<div class="navButton right" id="btnLogout">
+				
+			</div>
+		</nav>
 		<div id="outerWraper">
-			<div id="innerWrapper">
-				<div class="content login">
+			<div id="innerWrapper" class="gradient">
+				<div class="content login right">
 
 				</div>
-				<div class="content attendance">
+				<div class="content attendance right">
 
 				</div>
-				<div class="content location">
+				<div class="content provision right">
 
 				</div>
-				<div class="content accommodation">
+				<div class="content location right">
+
+				</div>
+				<div class="content accommodation right">
 
 				</div>
 			</div>

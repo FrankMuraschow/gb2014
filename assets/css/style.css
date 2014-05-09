@@ -15,37 +15,87 @@ div#distance {
 	height: 50%; /* required */
 	float: left; /* required */
 }
-div.content {
+
+.left {
 	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clearLeft {
+	clear: left;
+}
+
+.clearRight {
+	clear: right;
+}
+
+.clear {
+	clear: both;
+}
+
+div.content {
 	width: 1000px;
 	height: 100%;
+}
+
+.gradient {
+	background: #d4f2e2; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0ZjJlMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjE2JSIgc3RvcC1jb2xvcj0iI2Q0ZjJlMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIxJSIgc3RvcC1jb2xvcj0iI2IzYjVlMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM3JSIgc3RvcC1jb2xvcj0iI2IzYjVlMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQyJSIgc3RvcC1jb2xvcj0iI2U2YmJkMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU4JSIgc3RvcC1jb2xvcj0iI2U2YmJkMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYzJSIgc3RvcC1jb2xvcj0iI2VhZThjMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc5JSIgc3RvcC1jb2xvcj0iI2VhZThjMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg0JSIgc3RvcC1jb2xvcj0iI2NiZWVkYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(left,  #d4f2e2 0%, #d4f2e2 16%, #b3b5e1 21%, #b3b5e1 37%, #e6bbd2 42%, #e6bbd2 58%, #eae8c3 63%, #eae8c3 79%, #cbeedb 84%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#d4f2e2), color-stop(16%,#d4f2e2), color-stop(21%,#b3b5e1), color-stop(37%,#b3b5e1), color-stop(42%,#e6bbd2), color-stop(58%,#e6bbd2), color-stop(63%,#eae8c3), color-stop(79%,#eae8c3), color-stop(84%,#cbeedb)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #d4f2e2 0%,#d4f2e2 16%,#b3b5e1 21%,#b3b5e1 37%,#e6bbd2 42%,#e6bbd2 58%,#eae8c3 63%,#eae8c3 79%,#cbeedb 84%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #d4f2e2 0%,#d4f2e2 16%,#b3b5e1 21%,#b3b5e1 37%,#e6bbd2 42%,#e6bbd2 58%,#eae8c3 63%,#eae8c3 79%,#cbeedb 84%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #d4f2e2 0%,#d4f2e2 16%,#b3b5e1 21%,#b3b5e1 37%,#e6bbd2 42%,#e6bbd2 58%,#eae8c3 63%,#eae8c3 79%,#cbeedb 84%); /* IE10+ */
+	background: linear-gradient(to right,  #d4f2e2 0%,#d4f2e2 16%,#b3b5e1 21%,#b3b5e1 37%,#e6bbd2 42%,#e6bbd2 58%,#eae8c3 63%,#eae8c3 79%,#cbeedb 84%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4f2e2', endColorstr='#cbeedb',GradientType=1 ); /* IE6-8 */
+}
+
+nav {
+	color: #000;
+	clear: both;
 	position: relative;
+	top: 25px;
+	margin: auto;
+	width: 1210px;
 }
 
 .login {
-	background-color: #ACFFFC;
+	/*background-color: #d4f2e2;*/
 }
 
 .attendance {
-	background-color: #623BDF;
+	/*background-color: #b3b5e1;*/
 }
 
 .location {
-	background-color: #FF6262;
+	/*background-color: #e6bbd2;*/
 }
 
 .accommodation {
-	background-color: #E8B54D;
+	/*background-color: #eae8c3;*/
 }
 
+.provision {
+	/*background-color: #cbeedb;*/
+}
+
+#btnLogout {
+	width: 35px; 
+}
+
+
 div#outerWraper {
-	clear: both;
 	top: 50%;
-	position: relative; /* positions content on top of distance */
+	left: 50%;
+	position: absolute;
 	text-align: left; /* horizontal centering hack for IE */
 	height: 700px; /* required - desired height */
 	width: 1000px; /* required - desired width */
-	margin: -350px auto 0 auto; /* required */
+	margin: -375px auto 0 -500px; /* required */
 	-webkit-box-shadow: 0px 0px 25px 5px rgba(0, 0, 11, 1);
 	box-shadow: 0px 0px 25px 5px rgba(0, 0, 11, 1);
 	overflow: hidden;
@@ -53,7 +103,7 @@ div#outerWraper {
 }
 
 div#innerWrapper {
-	width: 4000px;
+	width: 6562px;
 	height: 100%;
 	margin-left: 0;
 	-webkit-transition: all 500ms ease-in-out;
@@ -80,6 +130,14 @@ div#staticContent, div#dynamicContent {
 	position: relative;
 }
 
+.navButton {
+	width: 220px;
+	height: 35px;
+	padding: 5px;
+	margin: 0 5px;
+	border: 1px solid black;
+}
+
 input {
 	height: 24px;
 	width: 92%;
@@ -97,7 +155,7 @@ input {
 .leftMargin {
 	margin-left: 3%;
 }
-
+______
 .topMargin {
 	margin-top: 2%;
 }

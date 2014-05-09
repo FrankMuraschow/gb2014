@@ -204,6 +204,8 @@ jQuery(function($) {"use strict";
 
 
     $(document).ready(function() {
+        var innerWrap = $('#innerWrapper');
+        
         if (getParameter('confirmation') || getParameter('participation')) {
 
             var currentAction = getParameter('confirmation') ? 'confirmRegistration' : 'confirmParticipation', contextText = getParameter('confirmation') ? 'Registrierung' : 'Teilnahme';
@@ -238,6 +240,28 @@ jQuery(function($) {"use strict";
                 }
             });
         }
+        
+        $('#btnAttendance').on("click", function() {
+            innerWrap.css('margin-left', '-1360px');
+        });
+        
+        $('#btnProvision').on("click", function() {
+            innerWrap.css('margin-left', '-2720px');
+        });
+        
+        $('#btnLocation').on("click", function() {
+            innerWrap.css('margin-left', '-4080px');
+        });
+        
+        $('#btnAccommodation').on("click", function() {
+            innerWrap.css('margin-left', '-5440px');
+        });
+        
+        $('#btnLogout').on("click", function() {
+            innerWrap.css('margin-left', '-0px');
+        });
+        
+        
 
         $('#masterPw').on("click", function() {
             if ($('#masterPw').val() !== "") {
