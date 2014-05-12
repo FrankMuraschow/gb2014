@@ -6,4 +6,11 @@
 	<script src="assets/js/jq.js?ref=2" type ="text/javascript"></script>
 	<script src="assets/js/jq_impl.js?ref=2" type ="text/javascript"></script>
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+	<!--[if gte IE 9]>
+	<style type="text/css">
+	.gradient {
+	filter: none;
+	}
+	</style>
+	<![endif]-->
 </head>

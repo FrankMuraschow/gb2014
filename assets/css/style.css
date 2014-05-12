@@ -6,7 +6,9 @@ body {
 	text-align: center; /* horizontal centering hack for IE */
 	padding: 0; /* required to "hide" distance div */
 	margin: 0; /* required to "hide" distance div */
-	background: rgba(255, 255, 255, 1);
+	background: no-repeat 0 0 #fff;
+	background-size:cover;
+	background-image:  url("../img/congruent_pentagon.png");*/
 	color: #fff;
 }
 div#distance {
@@ -54,39 +56,101 @@ div.content {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4f2e2', endColorstr='#cbeedb',GradientType=1 ); /* IE6-8 */
 }
 
+.transisitionAllFast {	
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-ms-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
+}
+
+.transisitionAllMed {	
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-ms-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+	transition: all 500ms ease-in-out;
+}
+
 nav {
 	color: #000;
 	clear: both;
 	position: relative;
 	top: 25px;
 	margin: auto;
-	width: 1210px;
+	width: 1000px;
 }
 
-.login {
-	/*background-color: #d4f2e2;*/
+.navButton {
+	width: 15%;
+	height: 20px;
+	padding: 5px;
+	margin: 0 5px;
+	border: 0;
+	border: 0;
+	border-bottom: 10px solid #ddd;
+	cursor: pointer;
 }
 
-.attendance {
-	/*background-color: #b3b5e1;*/
+#btnAttendance {
 }
 
-.location {
-	/*background-color: #e6bbd2;*/
+#btnProvision {
+	
 }
 
-.accommodation {
-	/*background-color: #eae8c3;*/
+#btnLocation {
+	
 }
 
-.provision {
-	/*background-color: #cbeedb;*/
+#btnAccommodation {
+	
 }
 
 #btnLogout {
-	width: 35px; 
+	width: 35px;
 }
 
+#btnLogout.active {
+	border-bottom-color: #d4f2e2;
+}
+
+#btnAttendance.active  {
+	border-bottom-color: #b3b5e1;
+}
+
+#btnProvision.active {
+	border-bottom-color: #e6bbd2;
+}
+
+#btnLocation.active  {
+	border-bottom-color: #eae8c3;
+}
+
+#btnAccommodation.active  {
+	border-bottom-color: #cbeedb;
+}
+
+
+#ctnLogin {
+	/*background-color: #d4f2e2;*/
+}
+
+#ctnAttendance {
+	/*background-color: #b3b5e1;*/
+}
+
+#ctnProvision {
+	/*background-color: #e6bbd2;*/
+}
+
+#ctnLocation {
+	/*background-color: #eae8c3;*/
+}
+
+#ctnAccommodation {
+	/*background-color: #cbeedb;*/
+}
 
 div#outerWraper {
 	top: 50%;
@@ -95,22 +159,17 @@ div#outerWraper {
 	text-align: left; /* horizontal centering hack for IE */
 	height: 700px; /* required - desired height */
 	width: 1000px; /* required - desired width */
-	margin: -375px auto 0 -500px; /* required */
-	-webkit-box-shadow: 0px 0px 25px 5px rgba(0, 0, 11, 1);
-	box-shadow: 0px 0px 25px 5px rgba(0, 0, 11, 1);
+	margin: -411px auto 0 -500px; /* required */
+	-webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
+	-moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
+	box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
 	overflow: hidden;
-	border: 1px solid #e5ecff;
 }
 
 div#innerWrapper {
 	width: 6562px;
 	height: 100%;
 	margin-left: 0;
-	-webkit-transition: all 500ms ease-in-out;
-	-moz-transition: all 500ms ease-in-out;
-	-ms-transition: all 500ms ease-in-out;
-	-o-transition: all 500ms ease-in-out;
-	transition: all 500ms ease-in-out;
 }
 
 div#contentPhaseTwo {
@@ -128,14 +187,6 @@ div#staticContent, div#dynamicContent {
 	height: 300px;
 	background: rgba(47, 49, 97, 0.9);
 	position: relative;
-}
-
-.navButton {
-	width: 220px;
-	height: 35px;
-	padding: 5px;
-	margin: 0 5px;
-	border: 1px solid black;
 }
 
 input {

@@ -204,64 +204,114 @@ jQuery(function($) {"use strict";
 
 
     $(document).ready(function() {
-        var innerWrap = $('#innerWrapper');
-        
-        if (getParameter('confirmation') || getParameter('participation')) {
+        var innerWrap = $('#innerWrapper'),
+            body = $('body');
+        // if (getParameter('confirmation') || getParameter('participation')) {
+        //
+        // var currentAction = getParameter('confirmation') ? 'confirmRegistration' : 'confirmParticipation', contextText = getParameter('confirmation') ? 'Registrierung' : 'Teilnahme';
+        // $('#confirmRegistrationText').text('Prüfe ' + contextText);
+        // $.ajax({
+        // url : "././dbConnectController.php",
+        // type : "POST",
+        // data : ( {
+        // action : currentAction,
+        // email : getParameter('email'),
+        // confirmationHash : getParameter('confirmationHash')
+        // }),
+        // beforeSend : function() {
+        // var confirmRegistration = $('#confirmRegistration');
+        // if (confirmRegistration.css('background-image') !== "url(" + imgAjaxLoader + ")") {
+        // confirmRegistration.css('background-image', "url(" + imgAjaxLoader + ")");
+        // }
+        // },
+        // success : function(result) {
+        // var confirmRegistration = $('#confirmRegistration'), contextText = getParameter('confirmation') ? 'Registrierung' : 'Teilnahme';
+        // result = $.trim(result);
+        // if (result) {
+        // errorMessage('show', result);
+        // confirmRegistration.css('background-image', "url(" + imgInvalid + ")");
+        //
+        // $('#confirmRegistrationText').text('Fehler bei der ' + contextText);
+        // } else {
+        // errorMessage('hide');
+        // confirmRegistration.css('background-image', "url(" + imgValid + ")");
+        // $('#confirmRegistrationText').text(contextText + ' erfolgreich');
+        // }
+        // }
+        // });
+        // }
+        //
 
-            var currentAction = getParameter('confirmation') ? 'confirmRegistration' : 'confirmParticipation', contextText = getParameter('confirmation') ? 'Registrierung' : 'Teilnahme';
-            $('#confirmRegistrationText').text('Prüfe ' + contextText);
-            $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : currentAction,
-                    email : getParameter('email'),
-                    confirmationHash : getParameter('confirmationHash')
-                }),
-                beforeSend : function() {
-                    var confirmRegistration = $('#confirmRegistration');
-                    if (confirmRegistration.css('background-image') !== "url(" + imgAjaxLoader + ")") {
-                        confirmRegistration.css('background-image', "url(" + imgAjaxLoader + ")");
-                    }
-                },
-                success : function(result) {
-                    var confirmRegistration = $('#confirmRegistration'), contextText = getParameter('confirmation') ? 'Registrierung' : 'Teilnahme';
-                    result = $.trim(result);
-                    if (result) {
-                        errorMessage('show', result);
-                        confirmRegistration.css('background-image', "url(" + imgInvalid + ")");
+        $('.navButton').on('click', function() {
+            var marVal = "0px", bgImg;
+            
+            $('.navButton').removeClass('active hover');
+            $(this).addClass('active');
+            
+            switch ($(this).attr('id')) {
+                case "btnAttendance" :
+                    marVal = "-1390px";
+                    bgImg = "vormittag.jpg";
+                    break;
+                case "btnProvision" :
+                    marVal = "-2781px";
+                    bgImg = "mittag.jpg";
+                    break;
+                case "btnLocation" :
+                    marVal = "-4171px";
+                    bgImg = "mittag.jpg";
+                    break;
+                case "btnAccommodation" :
+                    marVal = "-5562px";
+                    bgImg = "mittag.jpg";
+                    break;
+                case "btnLogout" :
+                    marVal = "0px";
+                    bgImg = "mittag.jpg";
+                    break;
+                default:
+                    marVal = "0px";
+                    bgImg = "mittag.jpg";
+                    break;
+            }
 
-                        $('#confirmRegistrationText').text('Fehler bei der ' + contextText);
-                    } else {
-                        errorMessage('hide');
-                        confirmRegistration.css('background-image', "url(" + imgValid + ")");
-                        $('#confirmRegistrationText').text(contextText + ' erfolgreich');
-                    }
-                }
-            });
-        }
-        
-        $('#btnAttendance').on("click", function() {
-            innerWrap.css('margin-left', '-1360px');
+            // body.css('background', 'url("assets/img/' + bgImg + '") no-repeat 0 0 #fff');
+            
+            innerWrap.css('margin-left', marVal);
+        }).on('mouseover', function() {
+            // var colVal = "";
+            if ($(this).hasClass('active') === false) {
+                $(this).addClass('active hover');
+            }
+            
+            // switch ($(this).attr('id')) {
+                // case "btnAttendance" :
+                    // colVal = "#b3b5e1";
+                    // break;
+                // case "btnProvision" :
+                    // colVal = "#e6bbd2";
+                    // break;
+                // case "btnLocation" :
+                    // colVal = "#eae8c3";
+                    // break;
+                // case "btnAccommodation" :
+                    // colVal = "#cbeedb";
+                    // break;
+                // case "btnLogout" :
+                    // colVal = "#d4f2e2";
+                    // break;
+                // default:
+                    // colVal = "#d4f2e2";
+                    // break;
+            // }
+// 
+            // $(this).css('border-color', colVal);
+        }).on('mouseleave', function() {
+            if ($(this).hasClass('hover') === true) {
+                $(this).removeClass('active hover');
+            }
+            // $(this).css('border-color', "#fff #fff #eee #fff");
         });
-        
-        $('#btnProvision').on("click", function() {
-            innerWrap.css('margin-left', '-2720px');
-        });
-        
-        $('#btnLocation').on("click", function() {
-            innerWrap.css('margin-left', '-4080px');
-        });
-        
-        $('#btnAccommodation').on("click", function() {
-            innerWrap.css('margin-left', '-5440px');
-        });
-        
-        $('#btnLogout').on("click", function() {
-            innerWrap.css('margin-left', '-0px');
-        });
-        
-        
 
         $('#masterPw').on("click", function() {
             if ($('#masterPw').val() !== "") {

@@ -9,37 +9,37 @@ ob_start();
 	?>
 	<body>
 		<nav>
-			<div class="navButton left" id="btnAttendance">
+			<div class="navButton left transisitionAllFast" id="btnAttendance">
 				Teilnahme
 			</div>
-			<div class="navButton left" id="btnProvision">
+			<div class="navButton left transisitionAllFast" id="btnProvision">
 				Versorgung
 			</div>
-			<div class="navButton left" id="btnLocation">
+			<div class="navButton left transisitionAllFast" id="btnLocation">
 				Anfahrt
 			</div>
-			<div class="navButton left" id="btnAccommodation">
+			<div class="navButton left transisitionAllFast" id="btnAccommodation">
 				Unterbringung
 			</div>
-			<div class="navButton right" id="btnLogout">
+			<div class="navButton right transisitionAllFast" id="btnLogout">
 				
 			</div>
 		</nav>
 		<div id="outerWraper">
-			<div id="innerWrapper" class="gradient">
-				<div class="content login right">
+			<div id="innerWrapper" class="gradient transisitionAllMed">
+				<div class="content right" id="ctnLogin">
 
 				</div>
-				<div class="content attendance right">
+				<div class="content right" id="ctnAttendance">
 
 				</div>
-				<div class="content provision right">
+				<div class="content right" id="ctnProvision">
 
 				</div>
-				<div class="content location right">
+				<div class="content right" id="ctnLocation">
 
 				</div>
-				<div class="content accommodation right">
+				<div class="content right" id="ctnAccommodation">
 
 				</div>
 			</div>
