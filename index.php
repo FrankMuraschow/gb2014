@@ -8,6 +8,7 @@ ob_start();
 	include_once 'inc/inc_header.php';
 	?>
 	<body>
+		<!-- <div id="bgOverlay"></div> -->
 		<nav>
 			<div class="navButton left transisitionAllFast" id="btnAttendance">
 				Teilnahme
@@ -26,7 +27,8 @@ ob_start();
 			</div>
 		</nav>
 		<div id="outerWraper">
-			<div id="innerWrapper" class="gradient transisitionAllMed">
+			<div id="innerWrapper" class="transisitionAllMed darkGradient">
+				<div class="gradient accentLine"></div>
 				<div class="content right" id="ctnLogin">
 
 				</div>
