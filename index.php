@@ -26,7 +26,7 @@ ob_start();
 				Login
 			</div>
 		</nav>
-		<div id="outerWraper">
+		<div id="outerWrapper">
 			<div id="innerWrapper" class="transisitionAllMed darkGradient">
 				<div class="gradient accentLine"></div>
 				<div class="content left" id="ctnLogin">

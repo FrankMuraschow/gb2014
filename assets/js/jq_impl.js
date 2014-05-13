@@ -217,6 +217,52 @@ jQuery(function ($) {
     }
 
 
+function positionWrapper(event) {
+        var innerWrap = $('#innerWrapper'),
+            body = $('body'), 
+            marVal = innerWrap.css('margin-left'),
+            bgImg, 
+            windowWidth1015 = $(window).width() <= 1015,
+            resizeEvent = event.type === "resize",
+            that;
+
+            if (resizeEvent === true) {
+                that = $('.navButton.active:not(.hover)');   
+                innerWrap.removeClass('transisitionAllMed');
+            } else {
+                that = $(event.target); 
+                $('.navButton').removeClass('active hover');
+                that.addClass('active');
+            }
+            
+            switch (that.attr('id')) {
+                case "btnAttendance":
+                    marVal = windowWidth1015 ? -1190 : -1390;
+                    break;
+                case "btnProvision":
+                    marVal = windowWidth1015 ? -2380 : -2781;
+                    break;
+                case "btnLocation":
+                    marVal = windowWidth1015 ? -3570 : -4171;
+                    break;
+                case "btnAccommodation":
+                    marVal = windowWidth1015 ? -4760 : -5562;
+                    break;
+                case "btnLogout":
+                    marVal = windowWidth1015 ? -0 : 0;
+                    break;
+            }
+
+            innerWrap.css('margin-left', marVal);
+                 
+            if (resizeEvent === true) {   
+                window.setTimeout(function() {
+                    innerWrap.addClass('transisitionAllMed');
+                }, 1);
+            }   
+    }
+
+
     $(document).ready(function () {
         var innerWrap = $('#innerWrapper'),
             body = $('body');
@@ -286,33 +332,9 @@ jQuery(function ($) {
             });
         })
 
-        $('.navButton').on('click', function () {
-            var marVal = innerWrap.css('margin-left'),
-                bgImg;
+        $(window).on('resize', positionWrapper);
 
-            $('.navButton').removeClass('active hover');
-            $(this).addClass('active');
-
-            switch ($(this).attr('id')) {
-            case "btnAttendance":
-                marVal = "-1390px";
-                break;
-            case "btnProvision":
-                marVal = "-2781px";
-                break;
-            case "btnLocation":
-                marVal = "-4171px";
-                break;
-            case "btnAccommodation":
-                marVal = "-5562px";
-                break;
-            case "btnLogout":
-                marVal = "0px";
-                break;
-            }
-
-            innerWrap.css('margin-left', marVal);
-        }).on('mouseover', function () {
+        $('.navButton').on('click', positionWrapper).on('mouseover', function () {
             // var colVal = "";
             if ($(this).hasClass('active') === false) {
                 $(this).addClass('active hover');

@@ -1,17 +1,16 @@
 @font-face {
-  font-family: "BebasNeue";
-  src: url("../font/BebasNeue.eot")
+	font-family: "BebasNeue";
+	src: url("../font/BebasNeue.eot")
 }
 @font-face {
-  font-family: "BebasNeue";
-  src: url("../font/BebasNeue.ttf")
+	font-family: "BebasNeue";
+	src: url("../font/BebasNeue.ttf")
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	
 }
 
 html, body {
@@ -30,7 +29,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed   :
+	position: fixed       :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -73,7 +72,7 @@ div#distance {
 div.content {
 	width: 1000px;
 	height: 100%;
-	position: relative;	
+	position: relative;
 }
 div.content:nth-child(n+3) {
 	margin-left: 390px;
@@ -141,7 +140,6 @@ div.content:nth-child(n+3) {
 	left: 50%;
 }
 
-
 .table {
 	display: table;
 }
@@ -149,20 +147,17 @@ div.content:nth-child(n+3) {
 	display: table-cell;
 }
 
-
 .bigButtonContainer {
 	height: 50px;
 	width: 400px;
 	margin: -25px 0 0 -200px;
-	
 }
 
 .bdTextfield {
 	color: #444;
 }
 
-.bdTextfield.active,
-.bdTextfield:hover {
+.bdTextfield.active, .bdTextfield:hover {
 	color: #000;
 }
 
@@ -197,12 +192,10 @@ nav {
 	font-size: 1.25em;
 	/*background: rgba(255,255,255,0.85);*/
 	overflow: auto;
-	position: absolute;
+	position: relative;
 	top: 25px;
-	margin: auto;
 	width: 1000px;
-	margin-left: -500px;
-	left: 50%;
+	margin: auto;
 }
 
 .navButton {
@@ -232,38 +225,30 @@ nav {
 }
 
 #btnLogout {
-	
+
 }
 
 #btnLogin {
 	cursor: default;
 }
 
-#btnLogin.active,
-#btnLogout.active,
-#btnLogout:hover
- {
+#btnLogin.active, #btnLogout.active, #btnLogout:hover {
 	border-bottom-color: #CF0400;
 }
 
-#btnAttendance.active,
-#btnAttendance:hover {
+#btnAttendance.active, #btnAttendance:hover {
 	border-bottom-color: #FD9206;
 }
 
-#btnProvision.active,
-#btnProvision:hover {
+#btnProvision.active, #btnProvision:hover {
 	border-bottom-color: #EFE933;
 }
 
-#btnLocation.active,
-#btnLocation:hover {
+#btnLocation.active, #btnLocation:hover {
 	border-bottom-color: #B1286E;
 }
 
-#btnAccommodation.active,
-#btnAccommodation:hover
- {
+#btnAccommodation.active, #btnAccommodation:hover {
 	border-bottom-color: #059CAD;
 }
 
@@ -292,14 +277,13 @@ nav {
 	/*background-color: #059CAD;*/
 }
 
-div#outerWraper {
-	top: 65px;
-	left: 50%;
-	position: absolute;
+div#outerWrapper {
+	top: 25px;
+	position: relative;
 	text-align: left; /* horizontal centering hack for IE */
 	height: 700px; /* required - desired height */
 	width: 1000px; /* required - desired width */
-	margin: 0 auto 0 -500px; /* required */
+	margin: auto;
 	-webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
 	-moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
 	box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
@@ -529,4 +513,23 @@ a, a:visited, a:hover, a:visited:hover {
 
 .inital {
 	color: #ccc;
+}
+
+@media all and (max-width: 1015px) {
+
+	nav {
+		width: 800px;
+	}
+	div#outerWrapper {
+		width: 800px;
+	}
+	div.content {
+		width: 800px;
+		height: 100%;
+		position: relative;
+	}
+	
+	div#innerWrapper {
+		width: 5560px;
+	}
 }
