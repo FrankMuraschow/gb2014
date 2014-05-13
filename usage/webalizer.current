@@ -1,7 +1,7 @@
-# Webalizer V2.23-08 Incremental Data - 05/11/2014 13:17:11
-2014 5 11 13 17 11
-157 142 2 8 2 1 20489786 35 2 0
-2 46 71 11 11
+# Webalizer V2.23-08 Incremental Data - 05/12/2014 23:59:42
+2014 5 12 23 59 42
+254 208 3 8 2 2 21722581 57 4 0
+1 87 87 11 12
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -13,7 +13,7 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 157 142 20489786 2 35 2
-0 0 0 0 0 0
+97 66 1232795 1 22 2
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -53,14 +53,14 @@
 0 0 0 0
 0 0 0 0
 0 0 0 0
+10 10 242444 2
 0 0 0 0
 0 0 0 0
-0 0 0 0
-0 0 0 0
+87 56 990351 20
 0
 0
 0
-142
+208
 0
 0
 0
@@ -71,13 +71,13 @@
 0
 0
 0
-7
+37
 0
 0
 0
 0
 0
-0
+1
 6
 0
 0
@@ -100,21 +100,21 @@
 0
 # -urls- 
 /assets/img/vormittag.jpg
-1 4 26846112 1137564 0 0
+1 4 0 1137564 0 0
 /assets/css/bootstrap.min.css
-1 2 26841312 34324 0 0
+1 2 0 34324 0 0
 /assets/js/jq.js
-1 34 26841440 2819190 0 0
+1 54 0 3673490 0 0
 /assets/img/mittag.jpg
-1 7 26846240 16248891 0 0
+1 7 0 16248891 0 0
 /assets/js/jq_impl.js
-1 35 26841104 119108 0 0
+1 55 0 155398 0 0
 /assets/img/congruent_pentagon.png
-1 1 26846352 28934 0 0
+1 16 0 318274 0 0
 /
-0 35 0 20307 2 0
+0 56 0 32604 4 1
 /assets/css/style.css
-1 33 26841552 80354 0 0
+1 53 0 120743 0 0
 # End Of Table - urls
 # -sites- (monthly)
 p4feea67f.dip0.t-ipconnect.de
@@ -123,26 +123,28 @@ p4feea67f.dip0.t-ipconnect.de
 p3e9c3463.dip0.t-ipconnect.de
 0 145 132 20185101 1 1399814224
 /
+p5080f3ce.dip0.t-ipconnect.de
+0 97 66 1232795 2 1399939179
+/
 # End Of Table - sites (monthly)
 # -sites- (daily)
-p4feea67f.dip0.t-ipconnect.de
-0 12 12 304685 1 1399770853
-/
-p3e9c3463.dip0.t-ipconnect.de
-0 145 132 20185101 1 1399814224
+p5080f3ce.dip0.t-ipconnect.de
+0 97 66 1232795 2 1399939179
 /
 # End Of Table - sites (daily)
 # -referrers- 
 http://bd2014.netznova.de/
-1 120
+1 195
 - (Direct Request)
-0 37
+0 59
 # End Of Table - referrers
 # -agents- 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
-1 157
+1 249
+Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+0 5
 Browser: Safari
-2 157
+2 249
 # End Of Table - agents
 # -search strings- 
 # End Of Table - search strings

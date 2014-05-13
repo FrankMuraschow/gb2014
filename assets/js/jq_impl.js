@@ -1,12 +1,21 @@
-jQuery(function($) {"use strict";
+jQuery(function ($) {
+    "use strict";
 
-    var emailValidationTimeoutHandle = window.setTimeout(function() {
-        return;
-    }, 1000), emailEqualityTimeoutHandle = window.setTimeout(function() {
-        return;
-    }, 1000), nickNameValidationTimeoutHandle = window.setTimeout(function() {
-        return;
-    }, 1000), emailValid = false, nickNameValid = false, emailEqual = false, imgAjaxLoader = "assets/img/ajax_loader_bars.gif", imgInvalid = "assets/img/cancel_24.png", imgValid = "assets/img/checkmark_24.png";
+    var emailValidationTimeoutHandle = window.setTimeout(function () {
+            return;
+        }, 1000),
+        emailEqualityTimeoutHandle = window.setTimeout(function () {
+            return;
+        }, 1000),
+        nickNameValidationTimeoutHandle = window.setTimeout(function () {
+            return;
+        }, 1000),
+        emailValid = false,
+        nickNameValid = false,
+        emailEqual = false,
+        imgAjaxLoader = "assets/img/ajax_loader_bars.gif",
+        imgInvalid = "assets/img/cancel_24.png",
+        imgValid = "assets/img/checkmark_24.png";
 
     function validKeycode(event) {
         return ((event.keyCode >= 48 && event.keyCode <= 90) || event.keyCode === 13 || event.keyCode === 8);
@@ -15,14 +24,14 @@ jQuery(function($) {"use strict";
     function checkEmailValidation() {
         var email = $('#firstEmail').val();
         $.ajax({
-            url : "././dbConnectController.php",
-            type : "POST",
-            data : {
-                action : "validateEmail",
-                str : email
+            url: "././dbConnectController.php",
+            type: "POST",
+            data: {
+                action: "validateEmail",
+                str: email
             },
-            dataType : "text",
-            success : function(result) {
+            dataType: "text",
+            success: function (result) {
                 result = $.trim(result);
                 var resultLength = result.length;
                 if ($('#firstEmail').val().length) {
@@ -47,21 +56,21 @@ jQuery(function($) {"use strict";
                     emailValid = false;
                 }
             },
-            complete : checkRegisterButton
+            complete: checkRegisterButton
         });
     }
 
     function checkNickNameValidation() {
         var nickName = $('#nickName').val();
         $.ajax({
-            url : "././dbConnectController.php",
-            type : "POST",
-            data : {
-                action : "validateNickName",
-                str : nickName
+            url: "././dbConnectController.php",
+            type: "POST",
+            data: {
+                action: "validateNickName",
+                str: nickName
             },
-            dataType : "text",
-            success : function(result) {
+            dataType: "text",
+            success: function (result) {
                 result = $.trim(result);
                 var resultLength = result.length;
                 if ($('#nickName').val().length) {
@@ -86,12 +95,13 @@ jQuery(function($) {"use strict";
                     nickNameValid = false;
                 }
             },
-            complete : checkRegisterButton
+            complete: checkRegisterButton
         });
     }
 
     function checkEmailEquality() {
-        var firstEmail = $('#firstEmail').val(), secondEmail = $('#secondEmail').val();
+        var firstEmail = $('#firstEmail').val(),
+            secondEmail = $('#secondEmail').val();
 
         if (emailValid && firstEmail === secondEmail) {
             emailEqual = true;
@@ -134,7 +144,9 @@ jQuery(function($) {"use strict";
     }
 
     function bigButtonClick() {
-        var thisOne = $(this), slideContainer = thisOne.closest('.slideDownContainer'), arrowImage = thisOne.find('.arrowImage');
+        var thisOne = $(this),
+            slideContainer = thisOne.closest('.slideDownContainer'),
+            arrowImage = thisOne.find('.arrowImage');
         thisOne.trigger('slideInProgress');
         if (slideContainer.data('slideposition') === 'down') {
             slideContainer.css('top', '-322px');
@@ -178,8 +190,9 @@ jQuery(function($) {"use strict";
     }
 
     function getParameter(paramName) {
-        var searchString = window.location.search.substring(1), i, val, params = searchString.split("&");
-        for ( i = 0; i < params.length; i++) {
+        var searchString = window.location.search.substring(1),
+            i, val, params = searchString.split("&");
+        for (i = 0; i < params.length; i++) {
             val = params[i].split("=");
             if (val[0] === paramName) {
                 return unescape(val[1]);
@@ -189,7 +202,8 @@ jQuery(function($) {"use strict";
     }
 
     function animateBorders() {
-        var items = ['#879fd7', '#859cea', '#cff2f6', '#393e7a', '#dbfcff', '#617cd0', '#444a92', '#304488', '#7c8ac2', '#3d418b'], color = items[Math.floor(Math.random() * items.length)];
+        var items = ['#879fd7', '#859cea', '#cff2f6', '#393e7a', '#dbfcff', '#617cd0', '#444a92', '#304488', '#7c8ac2', '#3d418b'],
+            color = items[Math.floor(Math.random() * items.length)];
         $('.animatedBorder').css('border-top-color', color);
         color = items[Math.floor(Math.random() * items.length)];
         $('.animatedBorder').css('border-right-color', color);
@@ -197,13 +211,13 @@ jQuery(function($) {"use strict";
         $('.animatedBorder').css('border-bottom-color', color);
         color = items[Math.floor(Math.random() * items.length)];
         $('.animatedBorder').css('border-left-color', color);
-        setTimeout(function() {
+        setTimeout(function () {
             animateBorders();
         }, 3000);
     }
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         var innerWrap = $('#innerWrapper'),
             body = $('body');
         // if (getParameter('confirmation') || getParameter('participation')) {
@@ -242,115 +256,136 @@ jQuery(function($) {"use strict";
         // }
         //
 
-        $('.navButton').on('click', function() {
-            var marVal = "0px", bgImg;
-            
+
+        $('#tbPassword').on('focus', function () {
+            var that = $(this);
+            if (that.val() === "" || that.val() === "Passwort") {
+                that.removeClass('inital');
+                that.val('');
+            }
+            that.addClass('active');
+        }).on('blur', function () {
+            var that = $(this);
+            if (that.val() === "" || that.val() === "Passwort") {
+                that.addClass('inital');
+                that.val('Passwort');
+            }
+            that.removeClass('active');
+        });
+
+        $('#btnPassword').on('click', function () {
+            $.ajax({
+                url: '',
+                method: 'POST',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        })
+
+        $('.navButton').on('click', function () {
+            var marVal = innerWrap.css('margin-left'),
+                bgImg;
+
             $('.navButton').removeClass('active hover');
             $(this).addClass('active');
-            
+
             switch ($(this).attr('id')) {
-                case "btnAttendance" :
-                    marVal = "-1390px";
-                    bgImg = "vormittag.jpg";
-                    break;
-                case "btnProvision" :
-                    marVal = "-2781px";
-                    bgImg = "mittag.jpg";
-                    break;
-                case "btnLocation" :
-                    marVal = "-4171px";
-                    bgImg = "mittag.jpg";
-                    break;
-                case "btnAccommodation" :
-                    marVal = "-5562px";
-                    bgImg = "mittag.jpg";
-                    break;
-                case "btnLogout" :
-                    marVal = "0px";
-                    bgImg = "mittag.jpg";
-                    break;
-                default:
-                    marVal = "0px";
-                    bgImg = "mittag.jpg";
-                    break;
+            case "btnAttendance":
+                marVal = "-1390px";
+                break;
+            case "btnProvision":
+                marVal = "-2781px";
+                break;
+            case "btnLocation":
+                marVal = "-4171px";
+                break;
+            case "btnAccommodation":
+                marVal = "-5562px";
+                break;
+            case "btnLogout":
+                marVal = "0px";
+                break;
             }
 
-            // body.css('background', 'url("assets/img/' + bgImg + '") no-repeat 0 0 #fff');
-            
             innerWrap.css('margin-left', marVal);
-        }).on('mouseover', function() {
+        }).on('mouseover', function () {
             // var colVal = "";
             if ($(this).hasClass('active') === false) {
                 $(this).addClass('active hover');
             }
-            
+
             // switch ($(this).attr('id')) {
-                // case "btnAttendance" :
-                    // colVal = "#b3b5e1";
-                    // break;
-                // case "btnProvision" :
-                    // colVal = "#e6bbd2";
-                    // break;
-                // case "btnLocation" :
-                    // colVal = "#eae8c3";
-                    // break;
-                // case "btnAccommodation" :
-                    // colVal = "#cbeedb";
-                    // break;
-                // case "btnLogout" :
-                    // colVal = "#d4f2e2";
-                    // break;
-                // default:
-                    // colVal = "#d4f2e2";
-                    // break;
+            // case "btnAttendance" :
+            // colVal = "#b3b5e1";
+            // break;
+            // case "btnProvision" :
+            // colVal = "#e6bbd2";
+            // break;
+            // case "btnLocation" :
+            // colVal = "#eae8c3";
+            // break;
+            // case "btnAccommodation" :
+            // colVal = "#cbeedb";
+            // break;
+            // case "btnLogout" :
+            // colVal = "#d4f2e2";
+            // break;
+            // default:
+            // colVal = "#d4f2e2";
+            // break;
             // }
-// 
+            // 
             // $(this).css('border-color', colVal);
-        }).on('mouseleave', function() {
+        }).on('mouseleave', function () {
             if ($(this).hasClass('hover') === true) {
                 $(this).removeClass('active hover');
             }
             // $(this).css('border-color', "#fff #fff #eee #fff");
         });
 
-        $('#masterPw').on("click", function() {
+        $('#masterPw').on("click", function () {
             if ($('#masterPw').val() !== "") {
                 $('#masterPw').val("");
             }
         });
 
-        $('#masterPw').on("keypress", function(e) {
+        $('#masterPw').on("keypress", function (e) {
             if (e.keyCode === 13 && $('#masterPw').val() !== "") {
                 $('#masterPwClick').click();
             }
         });
 
-        $('#userPw').on("click", function() {
+        $('#userPw').on("click", function () {
             if ($('#userPw').val() !== "") {
                 $('#userPw').val("");
             }
         });
 
-        $(document.body).on('click', '#sendRegistration:not(.disabled)', function() {
+        $(document.body).on('click', '#sendRegistration:not(.disabled)', function () {
             if (emailEqual && emailValid && nickNameValid) {
                 $.ajax({
-                    url : "././dbConnectController.php",
-                    type : "POST",
-                    data : ( {
-                        action : "registerUser",
-                        email : $('#firstEmail').val(),
-                        nickName : $('#nickName').val()
+                    url: "././dbConnectController.php",
+                    type: "POST",
+                    data: ({
+                        action: "registerUser",
+                        email: $('#firstEmail').val(),
+                        nickName: $('#nickName').val()
                     }),
-                    beforeSend : function() {
+                    beforeSend: function () {
                         var registerCheck = $('#registerCheck');
                         if (registerCheck.css('background-image') !== "url(" + imgAjaxLoader + ")") {
                             registerCheck.css('background-image', "url(" + imgAjaxLoader + ")");
                         }
                     },
-                    dataType : "text",
-                    success : function(result) {
+                    dataType: "text",
+                    success: function (result) {
                         result = $.trim(result);
-                        var registerCheck = $('#registerCheck'), td = $('#sendRegistration').closest('td');
+                        var registerCheck = $('#registerCheck'),
+                            td = $('#sendRegistration').closest('td');
                         if (result) {
                             errorMessage('show', 'Irgendwas ist schief gelaufen: ' + result);
                             registerCheck.css('background-image', "url(" + imgInvalid + ")");
@@ -358,7 +393,7 @@ jQuery(function($) {"use strict";
                             errorMessage('hide');
                             registerCheck.css('background-image', "url(" + imgValid + ")");
                             $('#sendRegistration').attr('disabled', 'disabled');
-                            $('#sendRegistration').fadeOut(500, function() {
+                            $('#sendRegistration').fadeOut(500, function () {
                                 $('#sendRegistration').removeAttr('id').removeAttr('class').attr('id', 'thanks');
                                 td.children('div').text('Bestätigungs E-Mail versandt');
                                 $('#thanks').fadeIn(500);
@@ -369,17 +404,18 @@ jQuery(function($) {"use strict";
             }
         });
 
-        $(document.body).on('keyup', '#nickName', function(event) {
+        $(document.body).on('keyup', '#nickName', function (event) {
             if (validKeycode(event)) {
                 window.clearTimeout(nickNameValidationTimeoutHandle);
                 errorMessage('hide');
-                var nickNameSelector = $('#nameCheck'), nickName = $('#nickName').val();
+                var nickNameSelector = $('#nameCheck'),
+                    nickName = $('#nickName').val();
 
                 if (nickName.length) {
                     if (nickNameSelector.css('background-image') !== "url(" + imgAjaxLoader + ")") {
                         nickNameSelector.css('background-image', "url(" + imgAjaxLoader + ")");
                     }
-                    nickNameValidationTimeoutHandle = window.setTimeout(function() {
+                    nickNameValidationTimeoutHandle = window.setTimeout(function () {
                         checkNickNameValidation();
                     }, 1250);
                 } else {
@@ -388,17 +424,18 @@ jQuery(function($) {"use strict";
             }
         });
 
-        $(document.body).on('keyup', '#firstEmail', function(event) {
+        $(document.body).on('keyup', '#firstEmail', function (event) {
             if (validKeycode(event)) {
                 window.clearTimeout(emailValidationTimeoutHandle);
                 errorMessage('hide');
-                var firstMailSelector = $('#emailCheck'), firstEmail = $('#firstEmail').val();
+                var firstMailSelector = $('#emailCheck'),
+                    firstEmail = $('#firstEmail').val();
 
                 if (firstEmail.length) {
                     if (firstMailSelector.css('background-image') !== "url(" + imgAjaxLoader + ")") {
                         firstMailSelector.css('background-image', "url(" + imgAjaxLoader + ")");
                     }
-                    emailValidationTimeoutHandle = window.setTimeout(function() {
+                    emailValidationTimeoutHandle = window.setTimeout(function () {
                         checkEmailValidation();
                     }, 1250);
                 } else {
@@ -407,17 +444,18 @@ jQuery(function($) {"use strict";
             }
         });
 
-        $(document.body).on('keyup', '#secondEmail', function(event) {
+        $(document.body).on('keyup', '#secondEmail', function (event) {
             if (validKeycode(event)) {
                 window.clearTimeout(emailEqualityTimeoutHandle);
                 errorMessage('hide');
-                var secondMailSelector = $('#emailCheckEquality'), secondEmail = $('#secondEmail').val();
+                var secondMailSelector = $('#emailCheckEquality'),
+                    secondEmail = $('#secondEmail').val();
 
                 if (secondEmail.length && emailValid) {
                     if (secondMailSelector.css('background-image') !== "url(" + imgAjaxLoader + ")") {
                         secondMailSelector.css('background-image', "url(" + imgAjaxLoader + ")");
                     }
-                    emailEqualityTimeoutHandle = window.setTimeout(function() {
+                    emailEqualityTimeoutHandle = window.setTimeout(function () {
                         checkEmailEquality();
                     }, 750);
                 } else {
@@ -426,75 +464,76 @@ jQuery(function($) {"use strict";
             }
         });
 
-        $(document.body).on('click', '#participationMail', function() {
+        $(document.body).on('click', '#participationMail', function () {
             $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : "sendParticipationMails"
+                url: "././dbConnectController.php",
+                type: "POST",
+                data: ({
+                    action: "sendParticipationMails"
                 }),
-                success : function(result) {
+                success: function (result) {
                     var bla = '';
                 }
             });
         });
 
-        $(document.body).on('click', '#wichtelMails', function() {
+        $(document.body).on('click', '#wichtelMails', function () {
             $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : "sendWichtelMails"
+                url: "././dbConnectController.php",
+                type: "POST",
+                data: ({
+                    action: "sendWichtelMails"
                 }),
-                success : function(result) {
+                success: function (result) {
                     var bla = '';
                 }
             });
         });
 
-        $(document.body).on('click', '#resendMail', function() {
+        $(document.body).on('click', '#resendMail', function () {
             var email = $('#resendEmailAddress').val();
             $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : "resendMail",
-                    email : email
+                url: "././dbConnectController.php",
+                type: "POST",
+                data: ({
+                    action: "resendMail",
+                    email: email
                 }),
-                success : function(result) {
+                success: function (result) {
                     var bla = '';
                 }
             });
         });
 
-        $('#masterPw').on('keyup', function(event) {
+        $('#masterPw').on('keyup', function (event) {
             if (validKeycode(event)) {
                 errorMessage('hide');
             }
         });
 
-        $('#masterPwClick').on("click", function() {
+        $('#masterPwClick').on("click", function () {
             errorMessage('hide');
             var masterPw = $("#masterPw").val();
             $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : "checkMaster",
-                    str : masterPw
+                url: "././dbConnectController.php",
+                type: "POST",
+                data: ({
+                    action: "checkMaster",
+                    str: masterPw
                 }),
-                dataType : "text",
-                success : function(result) {
-                    var resultLength = $.trim(result).length, content = $('#dynamicContent > div:first-child');
+                dataType: "text",
+                success: function (result) {
+                    var resultLength = $.trim(result).length,
+                        content = $('#dynamicContent > div:first-child');
                     if (resultLength === 0) {
                         errorMessage('show', 'Falsches Passwort');
                         $('#masterPw').focus();
                     } else {
-                        content.fadeOut(300, function() {
+                        content.fadeOut(300, function () {
                             content.html(result);
                             content.fadeIn({
-                                duration : 300,
-                                complete : function() {
+                                duration: 300,
+                                complete: function () {
                                     $('#nickName').focus();
                                 }
                             });
@@ -506,25 +545,25 @@ jQuery(function($) {"use strict";
 
         $('.bigButton').on('click', bigButtonClick);
 
-        $('.bigButton').on('slideInProgress', function() {
+        $('.bigButton').on('slideInProgress', function () {
             var thisOne = $(this);
             thisOne.off('click');
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 thisOne.on('click', bigButtonClick);
             }, 1000);
         });
 
-        $('#confirmAdmin').on('click', function() {
+        $('#confirmAdmin').on('click', function () {
             var pw = $('#adminPw').val();
 
             $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : "confirmAdmin",
-                    str : pw
+                url: "././dbConnectController.php",
+                type: "POST",
+                data: ({
+                    action: "confirmAdmin",
+                    str: pw
                 }),
-                success : function(result) {
+                success: function (result) {
                     var resultLength = $.trim(result).length
 
                     if (resultLength) {

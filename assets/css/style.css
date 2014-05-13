@@ -1,6 +1,22 @@
+@font-face {
+  font-family: "BebasNeue";
+  src: url("../font/BebasNeue.eot")
+}
+@font-face {
+  font-family: "BebasNeue";
+  src: url("../font/BebasNeue.ttf")
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	
+}
+
 html, body {
 	height: 100%; /* required */
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: "BebasNeue";
 }
 body {
 	text-align: center; /* horizontal centering hack for IE */
@@ -14,7 +30,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed  :
+	position: fixed   :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -28,6 +44,10 @@ div#distance {
 	width: 1px; /* required to "hide" distance div */
 	height: 50%; /* required */
 	float: left; /* required */
+}
+
+.block {
+	display: block;
 }
 
 .left {
@@ -53,6 +73,10 @@ div#distance {
 div.content {
 	width: 1000px;
 	height: 100%;
+	position: relative;	
+}
+div.content:nth-child(n+3) {
+	margin-left: 390px;
 }
 
 .gradient {
@@ -105,6 +129,68 @@ div.content {
 	width: 100%;
 }
 
+.hidden {
+	/*display: none;*/
+}
+
+.middle {
+	position: absolute;
+	margin: 0;
+	padding: 0px;
+	top: 50%;
+	left: 50%;
+}
+
+
+.table {
+	display: table;
+}
+.table-cell {
+	display: table-cell;
+}
+
+
+.bigButtonContainer {
+	height: 50px;
+	width: 400px;
+	margin: -25px 0 0 -200px;
+	
+}
+
+.bdTextfield {
+	color: #444;
+}
+
+.bdTextfield.active,
+.bdTextfield:hover {
+	color: #000;
+}
+
+.bdTextfield.big {
+	padding: 0 2px;
+	font-size: 25px;
+	width: 300px;
+	height: 50px;
+}
+
+.bdButton {
+	cursor: pointer;
+	color: #ddd;
+	background: #111;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.bdButton:hover {
+	background: #333;
+}
+
+.bdButton.big {
+	width: 50px;
+	height: 50px;
+	font-size: 25px;
+}
+
 nav {
 	color: #fff;
 	font-weight: bold;
@@ -146,27 +232,44 @@ nav {
 }
 
 #btnLogout {
-	width: 35px;
+	
 }
 
-#btnLogout.active {
+#btnLogin {
+	cursor: default;
+}
+
+#btnLogin.active,
+#btnLogout.active,
+#btnLogout:hover
+ {
 	border-bottom-color: #CF0400;
 }
 
-#btnAttendance.active {
+#btnAttendance.active,
+#btnAttendance:hover {
 	border-bottom-color: #FD9206;
 }
 
-#btnProvision.active {
+#btnProvision.active,
+#btnProvision:hover {
 	border-bottom-color: #EFE933;
 }
 
-#btnLocation.active {
+#btnLocation.active,
+#btnLocation:hover {
 	border-bottom-color: #B1286E;
 }
 
-#btnAccommodation.active {
+#btnAccommodation.active,
+#btnAccommodation:hover
+ {
 	border-bottom-color: #059CAD;
+}
+
+.active {
+	background: #fff;
+	color: #000;
 }
 
 #ctnLogin {
@@ -190,13 +293,13 @@ nav {
 }
 
 div#outerWraper {
-	top: 50%;
+	top: 65px;
 	left: 50%;
 	position: absolute;
 	text-align: left; /* horizontal centering hack for IE */
 	height: 700px; /* required - desired height */
 	width: 1000px; /* required - desired width */
-	margin: -433px auto 0 -500px; /* required */
+	margin: 0 auto 0 -500px; /* required */
 	-webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
 	-moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
 	box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.65);
@@ -209,7 +312,7 @@ div#innerWrapper {
 	left: 0;
 	width: 6562px;
 	height: 100%;
-	margin-left: 0;
+	margin-left: 0px;
 }
 
 div#contentPhaseTwo {
@@ -422,4 +525,8 @@ a, a:visited, a:hover, a:visited:hover {
 
 .standardList > li {
 	padding: 0 0 15px 0;
+}
+
+.inital {
+	color: #ccc;
 }
