@@ -1,7 +1,7 @@
-# Webalizer V2.23-08 Incremental Data - 05/12/2014 23:59:42
-2014 5 12 23 59 42
-254 208 3 8 2 2 21722581 57 4 0
-1 87 87 11 12
+# Webalizer V2.23-08 Incremental Data - 05/13/2014 23:04:07
+2014 5 13 23 4 7
+1121 1035 5 15 2 3 51323170 208 7 0
+3 18 277 11 13
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -14,6 +14,7 @@
 0 0 0 0 0 0
 157 142 20489786 2 35 2
 97 66 1232795 1 22 2
+867 827 29600589 3 151 4
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -32,8 +33,7 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0
+73 59 1132355 16
 12 12 304685 3
 0 0 0 0
 0 0 0 0
@@ -42,7 +42,7 @@
 0 0 0 0
 0 0 0 0
 0 0 0 0
-0 0 0 0
+10 10 202444 2
 0 0 0 0
 28 25 551586 7
 71 60 18589419 14
@@ -51,16 +51,16 @@
 0 0 0 0
 0 0 0 0
 0 0 0 0
-0 0 0 0
-0 0 0 0
-10 10 242444 2
-0 0 0 0
-0 0 0 0
-87 56 990351 20
+30 27 881751 6
+277 275 10444798 46
+185 181 6615547 32
+56 49 1695448 10
+228 223 8414719 38
+105 69 1446322 23
 0
 0
 0
-208
+1035
 0
 0
 0
@@ -71,14 +71,14 @@
 0
 0
 0
-37
+74
 0
 0
 0
 0
 0
 1
-6
+9
 0
 0
 0
@@ -101,50 +101,78 @@
 # -urls- 
 /assets/img/vormittag.jpg
 1 4 0 1137564 0 0
+/assets/css/BebasNeue.ttf
+0 60 19167920 7412760 0 0
 /assets/css/bootstrap.min.css
 1 2 0 34324 0 0
 /assets/js/jq.js
-1 54 0 3673490 0 0
+1 202 0 15377400 0 0
 /assets/img/mittag.jpg
 1 7 0 16248891 0 0
+/assets/font/BebasNeue.ttf
+0 53 19167792 6407640 0 0
+/assets/font/BebasNeue.eot
+0 1 19168176 125856 0 0
+/assets/img/congruent_outline.png
+1 135 19152160 1120525 0 0
+/assets/css/BebasNeue.eot
+0 2 19168048 251712 0 0
 /assets/js/jq_impl.js
-1 55 0 155398 0 0
+1 203 0 660266 0 0
 /assets/img/congruent_pentagon.png
-1 16 0 318274 0 0
+1 22 0 462944 0 0
+/assets/font/BebasNeue_Light.ttf
+0 10 19167536 1305240 0 0
 /
-0 56 0 32604 4 1
+0 207 0 136041 7 2
+/assets/font/BebasNeue_Light.eot
+0 1 19167664 57096 0 0
 /assets/css/style.css
-1 53 0 120743 0 0
+1 202 0 583052 0 0
 # End Of Table - urls
 # -sites- (monthly)
+p4ff966e9.dip0.t-ipconnect.de
+0 10 10 202444 1 1399974106
+/
 p4feea67f.dip0.t-ipconnect.de
 0 12 12 304685 1 1399770853
+/
+p3e9c3b99.dip0.t-ipconnect.de
+0 784 758 28265790 2 1400022247
 /
 p3e9c3463.dip0.t-ipconnect.de
 0 145 132 20185101 1 1399814224
 /
 p5080f3ce.dip0.t-ipconnect.de
-0 97 66 1232795 2 1399939179
+0 170 125 2365150 2 1399939712
 /
 # End Of Table - sites (monthly)
 # -sites- (daily)
+p4ff966e9.dip0.t-ipconnect.de
+0 10 10 202444 1 1399974106
+/
+p3e9c3b99.dip0.t-ipconnect.de
+0 784 758 28265790 2 1400022247
+/
 p5080f3ce.dip0.t-ipconnect.de
-0 97 66 1232795 2 1399939179
+0 73 59 1132355 1 1399939712
 /
 # End Of Table - sites (daily)
 # -referrers- 
 http://bd2014.netznova.de/
-1 195
+1 911
 - (Direct Request)
-0 59
+0 210
 # End Of Table - referrers
 # -agents- 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
-1 249
+1 1036
 Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
-0 5
+0 75
 Browser: Safari
-2 249
+2 1046
+Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+1 10
 # End Of Table - agents
 # -search strings- 
 # End Of Table - search strings

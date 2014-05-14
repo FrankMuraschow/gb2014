@@ -32,14 +32,21 @@ ob_start();
 				<div class="content left" id="ctnLogin">
 					<div class="middle bigButtonContainer table">
 						<input type="text" class="bdTextfield big left table-cell inital transisitionAllFast" value="Passwort" id="tbPassword" />
-						<div class="bdButton big table-cell transisitionAllFast" id="btnPassword">OK</div>
+						<div class="bdButton big table-cell transisitionAllFast" id="btnPassword">
+							OK
+						</div>
 					</div>
 				</div>
 
 				<div class="content left" id="ctnAttendance">
-
+					<div class="content_bg_wrapper">
+						<div class="content_bg"></div>
+					</div>
 				</div>
 				<div class="content left" id="ctnProvision">
+					<div class="content_bg_wrapper">
+						<div class="content_bg"></div>
+					</div>
 
 				</div>
 				<div class="content left" id="ctnLocation">

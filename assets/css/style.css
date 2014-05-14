@@ -29,7 +29,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed       :
+	position: fixed        :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -69,13 +69,69 @@ div#distance {
 	clear: both;
 }
 
-div.content {
+.content {
 	width: 1000px;
 	height: 100%;
 	position: relative;
 }
-div.content:nth-child(n+3) {
+
+.content:nth-child(n+3) {
 	margin-left: 390px;
+}
+
+.content_bg_wrapper {
+	height: 50px;
+	bottom: 10px;
+	margin-left: auto;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+
+.content_bg {
+	width: 800px;
+	height: 50px;
+	margin: auto;
+}
+
+#ctnLogin .content_bg {
+	background: transparent;
+}
+
+#ctnAttendance .content_bg {
+	background: url('../img/contentBgs/attendance_bg.png');
+}
+
+#ctnProvision .content_bg {
+	background: url('../img/contentBgs/provision_bg.png');
+}
+
+#ctnLocation .content_bg {
+	background: transparent;
+}
+
+#ctnAccommodation .content_bg {
+	background: transparent;
+}
+
+#ctnLogin {
+	background: transparent;
+}
+
+#ctnAttendance {
+	/*background-color: #FD9206;*/
+}
+
+#ctnProvision {
+	/*background-color: #EFE933;*/
+}
+
+#ctnLocation {
+	/*background-color: #B1286E;*/
+}
+
+#ctnAccommodation {
+	/*background-color: #059CAD;*/
 }
 
 .gradient {
@@ -255,26 +311,6 @@ nav {
 .active {
 	background: #fff;
 	color: #000;
-}
-
-#ctnLogin {
-	/*background-color: #CF0400;*/
-}
-
-#ctnAttendance {
-	/*background-color: #FD9206;*/
-}
-
-#ctnProvision {
-	/*background-color: #EFE933;*/
-}
-
-#ctnLocation {
-	/*background-color: #B1286E;*/
-}
-
-#ctnAccommodation {
-	/*background-color: #059CAD;*/
 }
 
 div#outerWrapper {
@@ -528,7 +564,7 @@ a, a:visited, a:hover, a:visited:hover {
 		height: 100%;
 		position: relative;
 	}
-	
+
 	div#innerWrapper {
 		width: 5560px;
 	}
