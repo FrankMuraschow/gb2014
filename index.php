@@ -9,20 +9,20 @@ ob_start();
 	?>
 	<body>
 		<!-- <div id="bgOverlay"></div> -->
-		<nav>
-			<div class="navButton left transisitionAllFast hidden" id="btnAttendance">
+		<nav class="unselectable" onselectstart="return false;" onmousedown="return false;" unselectable"on">
+			<div class="navButton left transisitionAllFast hidden unselectable" id="btnAttendance" onselectstart="return false;" onmousedown="return false;" unselectable"on">
 				Teilnahme
 			</div>
-			<div class="navButton left transisitionAllFast hidden" id="btnProvision">
+			<div class="navButton left transisitionAllFast hidden unselectable" id="btnProvision" onselectstart="return false;" onmousedown="return false;" unselectable"on">
 				Versorgung
 			</div>
-			<div class="navButton left transisitionAllFast hidden" id="btnLocation">
+			<div class="navButton left transisitionAllFast hidden unselectable" id="btnLocation" onselectstart="return false;" onmousedown="return false;" unselectable"on">
 				Anfahrt
 			</div>
-			<div class="navButton left transisitionAllFast hidden" id="btnAccommodation">
+			<div class="navButton left transisitionAllFast hidden unselectable" id="btnAccommodation" onselectstart="return false;" onmousedown="return false;" unselectable"on">
 				Unterbringung
 			</div>
-			<div class="navButton right transisitionAllFast active" id="btnLogin">
+			<div class="navButton right transisitionAllFast active unselectable" id="btnLogin" onselectstart="return false;" onmousedown="return false;" unselectable"on">
 				Login
 			</div>
 		</nav>
@@ -47,13 +47,16 @@ ob_start();
 					<div class="content_bg_wrapper">
 						<div class="content_bg"></div>
 					</div>
-
 				</div>
 				<div class="content left" id="ctnLocation">
-
+					<div class="content_bg_wrapper">
+						<div class="content_bg"></div>
+					</div>
 				</div>
 				<div class="content left" id="ctnAccommodation">
-
+					<div class="content_bg_wrapper">
+						<div class="content_bg"></div>
+					</div>
 				</div>
 			</div>
 		</div>
