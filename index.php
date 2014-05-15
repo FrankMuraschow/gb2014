@@ -29,7 +29,13 @@ ob_start();
 		<div id="outerWrapper">
 			<div id="innerWrapper" class="transisitionAllMed darkGradient">
 				<div class="gradient accentLine"></div>
+				
 				<div class="content left" id="ctnLogin">
+					<div class="introText">
+						Hier teilst du uns mit, ob du zur Feier kommen wirst.
+						<br />
+						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+					</div>
 					<div class="middle bigButtonContainer table">
 						<input type="text" class="bdTextfield big left table-cell inital transisitionAllFast" value="Passwort" id="tbPassword" />
 						<div class="bdButton big table-cell transisitionAllFast" id="btnPassword">
@@ -39,21 +45,41 @@ ob_start();
 				</div>
 
 				<div class="content left" id="ctnAttendance">
+					<div class="introText">
+						Hier teilst du uns mit, ob du zur Feier kommen wirst.
+						<br />
+						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+					</div>
 					<div class="content_bg_wrapper">
 						<div class="content_bg"></div>
 					</div>
 				</div>
 				<div class="content left" id="ctnProvision">
+					<div class="introText">
+						Hier teilst du uns mit, ob du zur Feier kommen wirst.
+						<br />
+						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+					</div>
 					<div class="content_bg_wrapper">
 						<div class="content_bg"></div>
 					</div>
 				</div>
 				<div class="content left" id="ctnLocation">
+					<div class="introText">
+						Hier teilst du uns mit, ob du zur Feier kommen wirst.
+						<br />
+						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+					</div>
 					<div class="content_bg_wrapper">
 						<div class="content_bg"></div>
 					</div>
 				</div>
 				<div class="content left" id="ctnAccommodation">
+					<div class="introText">
+						Hier teilst du uns mit, ob du zur Feier kommen wirst.
+						<br />
+						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+					</div>
 					<div class="content_bg_wrapper">
 						<div class="content_bg"></div>
 					</div>

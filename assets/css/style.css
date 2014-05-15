@@ -1,10 +1,33 @@
 @font-face {
-	font-family: "BebasNeue";
-	src: url("../font/BebasNeue.eot")
+	font-family: 'BebasNeue';
+	src: url('../font/BebasNeue.eot');
+	src: url('../font/BebasNeue.eot?#iefix') format('embedded-opentype'), url('../font/BebasNeue.woff') format('woff'), url('../font/BebasNeue.ttf') format('truetype'), url('../font/BebasNeue.svg#bebas_neueregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
+
 @font-face {
-	font-family: "BebasNeue";
-	src: url("../font/BebasNeue.ttf")
+	font-family: 'BebasNeue';
+	src: url('../font/BebasNeue.eot');
+	src: url('../font/BebasNeue.eot?#iefix') format('embedded-opentype'), url('../font/BebasNeue.woff') format('woff'), url('../font/BebasNeue.ttf') format('truetype'), url('../font/BebasNeue.svg#bebas_neuelight') format('svg');
+	font-weight: lighter;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DroidSans';
+	src: url('../font/DroidSans.eot');
+	src: url('../font/DroidSans.eot?#iefix') format('embedded-opentype'), url('../font/DroidSans.woff') format('woff'), url('../font/DroidSans.ttf') format('truetype'), url('../font/DroidSans.svg#DroidSans') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DroidSans';
+	src: url('../font/DroidSansBold.eot');
+	src: url('../font/DroidSansBold.eot?#iefix') format('embedded-opentype'), url('../font/DroidSansBold.woff') format('woff'), url('../font/DroidSansBold.ttf') format('truetype'), url('../font/DroidSansBold.svg#droid_sansbold') format('svg');
+	font-weight: bold;
+	font-style: normal;
 }
 
 * {
@@ -29,7 +52,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed         :
+	position: fixed            :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -101,6 +124,11 @@ div#distance {
 	margin: auto;
 }
 
+input {
+	font-family: "DroidSans";
+	font-weight: bold;
+}
+
 #ctnLogin .content_bg {
 	background: transparent;
 }
@@ -118,12 +146,12 @@ div#distance {
 }
 
 #ctnAccommodation .content_bg {
-	background: url('../img/contentBgs/accomendation_bg.png');
+	background: url('../img/contentBgs/accommondation_bg.png');
 }
 }
 
 #ctnLogin {
-	background: transparent;
+	/*background-color: #cf0400;*/
 }
 
 #ctnAttendance {
@@ -140,6 +168,31 @@ div#distance {
 
 #ctnAccommodation {
 	/*background-color: #059CAD;*/
+}
+
+
+
+#ctnLogin .introText {
+	background-color: #1e0100;
+}
+#ctnAttendance .introText {
+	background-color: #170d00;
+}
+#ctnProvision .introText {
+	background-color: #0e0e01;
+}
+#ctnLocation .introText {
+	background-color: #11040b;
+}
+#ctnAccommodation .introText {
+	background-color: #011214;
+}
+
+.introText {
+	margin: 10px;
+	padding: 5px;
+	font-family: "DroidSans"; 
+	font-size: 10pt;	
 }
 
 .gradient {
@@ -316,9 +369,15 @@ nav {
 	border-bottom-color: #059CAD;
 }
 
-.active {
+
+.active.hover  {
 	background: #fff;
 	color: #000;
+}
+
+.active  {
+	background: transparent;
+	color: #fff;
 }
 
 div#outerWrapper {
