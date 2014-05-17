@@ -29,17 +29,28 @@ ob_start();
 		<div id="outerWrapper">
 			<div id="innerWrapper" class="transisitionAllMed darkGradient">
 				<div class="gradient accentLine"></div>
-				
+
 				<div class="content left" id="ctnLogin">
 					<div class="introText">
-						Hier teilst du uns mit, ob du zur Feier kommen wirst.
-						<br />
-						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+						Bitte melde dich mit den Nutzerdaten an, die dir zugeschickt worden.
 					</div>
 					<div class="middle bigButtonContainer table">
-						<input type="text" class="bdTextfield big left table-cell inital transisitionAllFast" value="Passwort" id="tbPassword" />
-						<div class="bdButton big table-cell transisitionAllFast" id="btnPassword">
-							OK
+						<div class="table-row">
+							<div class="table-cell left">
+								<input type="text" class="bdTextfield big inital transisitionAllFast" value="Nutzername" id="tbUser" />
+							</div>
+						</div>
+						<div class="table-row smallTopMargin">
+							<div class="table-cell">
+								<input type="password" class="bdTextfield big inital transisitionAllFast" value="Passwort" id="tbPassword" />
+							</div>
+							<div class="table-cell vMiddle">
+								<div class="table">
+									<div class="bdButton big table-cell transisitionAllSuperFast vMiddle" id="btnPassword">
+										OK
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

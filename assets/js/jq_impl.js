@@ -318,6 +318,23 @@ function positionWrapper(event) {
             }
             that.removeClass('active');
         });
+        
+        
+        $('#tbUser').on('focus', function () {
+            var that = $(this);
+            if (that.val() === "" || that.val() === "Nutzername") {
+                that.removeClass('inital');
+                that.val('');
+            }
+            that.addClass('active');
+        }).on('blur', function () {
+            var that = $(this);
+            if (that.val() === "" || that.val() === "Nutzername") {
+                that.addClass('inital');
+                that.val('Nutzername');
+            }
+            that.removeClass('active');
+        });
 
         $('#btnPassword').on('click', function () {
             $.ajax({
