@@ -6,8 +6,8 @@ function __autoload($class_name) {
 if (isset($_POST['action']) && !empty($_POST['action'])) {
 	$action = $_POST['action'];
 	switch($action) {
-		case 'checkMaster' :
-			checkMaster($_POST['str']);
+		case 'validateUser' :
+			validateUser($_POST['user'], $_POST['pw']);
 			break;
 		case 'checkMasterPhaseTwo' :
 			checkMasterPhaseTwo($_POST['str']);
@@ -65,8 +65,11 @@ class dbConnectController {
 	private $connection;
 	private $log;
 	private $mailer;
+
+	// This will confuse me
+	private $logFile = "]S]pqZN<>tXaj,q^,CBLjL5IF,s*`m=r<NfaP8QCB;,Z^bVGpi[d;[>D#`v#8_KNUBUMCW[l?VWBR6tJ2kEwNd=wdLq*!@e1[Z?<o=+i&1q6)C>#|_:9IyBq@UzQGbgDS>ly yglZH1;hN<}|Zxw6&cH6q+3m4Oiw_WLJlTfRU6|?x}|6icWku19.NM!| m),5f;jF~Rl3tq-ZVaF3WuZUn]^3YhIoBfW]BGsKZ4_3o^oJAmekE8e3S*KbHy{<Z%";
+
 	public function __construct() {
-		$this -> log = new Logging();
 		$this -> log -> lfile("log");
 
 		$config = new conf();
@@ -85,245 +88,247 @@ class dbConnectController {
 		return $this -> log;
 	}
 
-	public function sendConfirmationMail($username) {
-		require_once ('./PHPMailer_5.2.0/class.phpmailer.php');
+	// public function sendConfirmationMail($username) {
+		// require_once ('./PHPMailer_5.2.0/class.phpmailer.php');
+// 
+		// $result = $this -> getEmailAddress($username);
+		// while ($row = $result -> fetch_assoc()) {
+			// $firstname = $row['firstname'];
+			// $email = $row['email'];
+			// $confirmationHash = $row['confirmationHash'];
+// 
+			// $confirmUrl = 'http://wichteln2013.netznova.de?confirmation=1&email=' . $email . '&confirmationHash=' . $confirmationHash;
+// 
+			// $mail = new PHPMailer();
+			// $mail -> SetFrom('wichteln@netznova.de', 'Weihnachtsmann Muri');
+			// $mail -> Subject = "Wichteln 2013 - Bestaetigungslink";
+			// $mail -> AltBody = $confirmUrl;
+// 
+			// $mail -> AddAddress($email, $realName);
+// 
+			// $body = file_get_contents("assets/mail/confirmationMail.php");
+			// $body = eregi_replace("[\]", '', $body);
+			// $body = ereg_replace("username", $firstname, $body);
+			// $body = ereg_replace("confirmUrl", $confirmUrl, $body);
+// 
+			// $mail -> MsgHTML($body);
+			// $mail -> Send();
+		// }
+	// }
+// 
+	// public function sendParticipationMail($username) {
+		// require_once ('./PHPMailer_5.2.0/class.phpmailer.php');
+// 
+		// $result = $this -> getEmailAddress($username);
+		// while ($row = $result -> fetch_assoc()) {
+			// $firstname = $row['firstname'];
+			// $email = $row['email'];
+			// $confirmationHash = $row['confirmationHash'];
+// 
+			// $confirmUrl = 'http://wichteln2013.netznova.de?participation=1&email=' . $email . '&confirmationHash=' . $confirmationHash;
+// 
+			// $mail = new PHPMailer();
+			// $mail -> SetFrom('wichteln@netznova.de', 'Weihnachtsmann Muri');
+			// $mail -> Subject = "Wichteln 2013 - Teilnahmebestaetigung";
+			// $mail -> AltBody = $confirmUrl;
+// 
+			// $mail -> AddAddress($email, $realName);
+// 
+			// $body = file_get_contents("assets/mail/participationMail.php");
+			// $body = eregi_replace("[\]", '', $body);
+			// $body = ereg_replace("username", $firstname, $body);
+			// $body = ereg_replace("confirmUrl", $confirmUrl, $body);
+// 
+			// $mail -> MsgHTML($body);
+			// $mail -> Send();
+		// }
+	// }
 
-		$result = $this -> getEmailAddress($username);
-		while ($row = $result -> fetch_assoc()) {
-			$firstname = $row['firstname'];
-			$email = $row['email'];
-			$confirmationHash = $row['confirmationHash'];
+	// public function sendMail($username) {
+// 
+		// require_once ('./PHPMailer_5.2.0/class.phpmailer.php');
+		// $luckyPerson = $this -> getLuckyPerson($username);
+// 
+		// $result = $this -> getEmailAddress($username);
+		// while ($row = $result -> fetch_assoc()) {
+			// $firstname = $row['firstname'];
+			// $emaiaddress = $row['email'];
+// 
+			// $mail = new PHPMailer();
+			// $mail -> SetFrom('wichteln@netznova.de', 'Weihnachtsmann Muri');
+			// $mail -> Subject = "Neues vom Wichteln 2013!";
+			// $mail -> AltBody = "Dein Wichtel ist: " . $luckyPerson;
+// 
+			// $mail -> AddAddress($emaiaddress, $realName);
+// 
+			// $body = file_get_contents("assets/mail/content_congrats.php");
+			// $body = eregi_replace("[\]", '', $body);
+			// $body = ereg_replace("username", $firstname, $body);
+			// $body = ereg_replace("luckyPerson", $luckyPerson, $body);
+// 
+			// $mail -> MsgHTML($body);
+			// $mail -> Send();
+		// }
+	// }
 
-			$confirmUrl = 'http://wichteln2013.netznova.de?confirmation=1&email=' . $email . '&confirmationHash=' . $confirmationHash;
-
-			$mail = new PHPMailer();
-			$mail -> SetFrom('wichteln@netznova.de', 'Weihnachtsmann Muri');
-			$mail -> Subject = "Wichteln 2013 - Bestaetigungslink";
-			$mail -> AltBody = $confirmUrl;
-
-			$mail -> AddAddress($email, $realName);
-
-			$body = file_get_contents("assets/mail/confirmationMail.php");
-			$body = eregi_replace("[\]", '', $body);
-			$body = ereg_replace("username", $firstname, $body);
-			$body = ereg_replace("confirmUrl", $confirmUrl, $body);
-
-			$mail -> MsgHTML($body);
-			$mail -> Send();
-		}
-	}
-
-	public function sendParticipationMail($username) {
-		require_once ('./PHPMailer_5.2.0/class.phpmailer.php');
-
-		$result = $this -> getEmailAddress($username);
-		while ($row = $result -> fetch_assoc()) {
-			$firstname = $row['firstname'];
-			$email = $row['email'];
-			$confirmationHash = $row['confirmationHash'];
-
-			$confirmUrl = 'http://wichteln2013.netznova.de?participation=1&email=' . $email . '&confirmationHash=' . $confirmationHash;
-
-			$mail = new PHPMailer();
-			$mail -> SetFrom('wichteln@netznova.de', 'Weihnachtsmann Muri');
-			$mail -> Subject = "Wichteln 2013 - Teilnahmebestaetigung";
-			$mail -> AltBody = $confirmUrl;
-
-			$mail -> AddAddress($email, $realName);
-
-			$body = file_get_contents("assets/mail/participationMail.php");
-			$body = eregi_replace("[\]", '', $body);
-			$body = ereg_replace("username", $firstname, $body);
-			$body = ereg_replace("confirmUrl", $confirmUrl, $body);
-
-			$mail -> MsgHTML($body);
-			$mail -> Send();
-		}
-	}
-
-	public function sendMail($username) {
-
-		require_once ('./PHPMailer_5.2.0/class.phpmailer.php');
-		$luckyPerson = $this -> getLuckyPerson($username);
-
-		$result = $this -> getEmailAddress($username);
-		while ($row = $result -> fetch_assoc()) {
-			$firstname = $row['firstname'];
-			$emaiaddress = $row['email'];
-
-			$mail = new PHPMailer();
-			$mail -> SetFrom('wichteln@netznova.de', 'Weihnachtsmann Muri');
-			$mail -> Subject = "Neues vom Wichteln 2013!";
-			$mail -> AltBody = "Dein Wichtel ist: " . $luckyPerson;
-
-			$mail -> AddAddress($emaiaddress, $realName);
-
-			$body = file_get_contents("assets/mail/content_congrats.php");
-			$body = eregi_replace("[\]", '', $body);
-			$body = ereg_replace("username", $firstname, $body);
-			$body = ereg_replace("luckyPerson", $luckyPerson, $body);
-
-			$mail -> MsgHTML($body);
-			$mail -> Send();
-		}
-	}
-
-	/**
-	 * Constructs a new PDO Object and returns it
-	 * @param string $name
-	 * @return Array connection to the database
-	 */
-	public function getUsers() {
-		$query = "SELECT * FROM participants WHERE willParticipate = 0 ORDER BY firstname";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function getUsersPhaseTwo() {
-		$query = "SELECT * FROM participants WHERE willParticipate = 1 ORDER BY firstname";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function getParticipants() {
-		$query = "SELECT userid, username FROM participants WHERE willParticipate = 1";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
+	// public function getUsers() {
+		// $query = "SELECT * FROM participants WHERE willParticipate = 0 ORDER BY firstname";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function getUsersPhaseTwo() {
+		// $query = "SELECT * FROM participants WHERE willParticipate = 1 ORDER BY firstname";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function getParticipants() {
+		// $query = "SELECT userid, username FROM participants WHERE willParticipate = 1";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
 
 	public function closeConnection() {
 		$this -> connection -> close();
 	}
 
-	public function checkUser($str, $pw) {
-		$query = "SELECT * FROM participants WHERE username = '$str' AND password = '" . md5($pw) . "'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
+	// public function checkUser($str, $pw) {
+		// $query = "SELECT * FROM participants WHERE username = '$str' AND password = '" . md5($pw) . "'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function checkNickName($str) {
+		// $str = strtolower($str);
+		// $query = "SELECT * FROM participants WHERE username = '$str'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function checkEmail($str) {
+		// $str = strtolower($str);
+		// $query = "SELECT * FROM participants WHERE email = '$str'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function randomizeWichtel() {
+		// $participants = $this -> getParticipants();
+		// $userids = array();
+		// $i = 0;
+		// $wichtelIds;
+		// $user_one = "";
+		// $user_two = "";
+// 
+		// while ($row = mysqli_fetch_row($participants)) {
+			// $userids[$i] = $row[0];
+			// $i++;
+		// }
+// 
+		// $usedIds = array();
+		// $otherIds = $userids;
+// 
+		// shuffle($userids);
+// 
+		// for ($j = 0; $j < count($userids); $j++) {
+			// $user_one = $userids[$j];
+			// $user_two = $otherIds[$j];
+// 
+			// if ($user_one == $user_two) {
+				// shuffle($userids);
+				// $j--;
+			// } else if (in_array($user_one, $usedIds)) {
+				// shuffle($userids);
+				// $j--;
+			// } else {
+				// $this -> setWichtel($user_one, $user_two);
+				// array_push($usedIds, $userids[$j]);
+			// }
+		// }
+	// }
+// 
+	// public function setWichtel($one, $two) {
+		// $query = "UPDATE  participants SET  chosePerson =  '$two' WHERE userid = $one";
+		// $result = $this -> connection -> query($query);
+		// $query = "UPDATE  participants SET  pickedBy =  '$one' WHERE userid = $two";
+		// $result = $this -> connection -> query($query);
+	// }
+// 
+	// public function getLuckyPerson($username) {
+		// $query = "SELECT chosePerson FROM participants WHERE username = '$username'";
+		// $result = $this -> connection -> query($query);
+// 
+		// while ($row = $result -> fetch_assoc()) {
+			// $choseId = $row['chosePerson'];
+		// }
+// 
+		// $query = "SELECT firstname, lastname FROM participants WHERE userid = $choseId";
+		// $result = $this -> connection -> query($query);
+// 
+		// while ($row = $result -> fetch_assoc()) {
+			// $luckyPerson = $row['firstname'] . " " . $row['lastname'];
+		// }
+// 
+		// return $luckyPerson;
+	// }
+// 
+	// public function setParticipant($str) {
+		// $query = "UPDATE  participants SET  willParticipate =  '1' WHERE  username = '$str'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function getEmailAddress($str) {
+		// $str = strtolower($str);
+		// $query = "SELECT firstname, email, confirmationHash FROM participants WHERE username = '$str'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function setGotEmail($str) {
+		// $query = "UPDATE  participants SET  gotEmail =  '1' WHERE  username = '$str'";
+		// $result = $this -> connection -> query($query);
+	// }
 
-	public function checkNickName($str) {
-		$str = strtolower($str);
-		$query = "SELECT * FROM participants WHERE username = '$str'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
+	// public function registerUser($nickName, $email, $confirmationHash) {
+		// $nickLow = strtolower($nickName);
+		// $email = strtolower($email);
+		// $query = "INSERT INTO `participants` (`firstname`, `lastname`, `username`, `password`, `chosePerson`, `pickedBy`, `userid`, `willParticipate`, `email`, `gotEmail`, `confirmationHash`) VALUES ('$nickName', '', '$nickLow', '', '0', '0', NULL, '0', '$email', '0', '$confirmationHash')";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function confirmRegistration($email, $confirmationHash) {
+		// $email = strtolower($email);
+		// $query = "SELECT username, gotEmail FROM participants WHERE email = '$email' AND confirmationHash = '$confirmationHash'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function confirmParticipation($email, $confirmationHash) {
+		// $email = strtolower($email);
+		// $query = "SELECT username, gotEmail FROM participants WHERE email = '$email' AND confirmationHash = '$confirmationHash' AND gotEmail = '1'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function getRegisteredUsers() {
+		// $query = "SELECT username FROM participants WHERE gotEmail = '1'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
+// 
+	// public function getUserByEmail($email) {
+		// $email = strtolower($email);
+		// $query = "SELECT username, gotEmail, willParticipate FROM participants WHERE email = '$email'";
+		// $result = $this -> connection -> query($query);
+		// return $result;
+	// }
 
-	public function checkEmail($str) {
-		$str = strtolower($str);
-		$query = "SELECT * FROM participants WHERE email = '$str'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function randomizeWichtel() {
-		$participants = $this -> getParticipants();
-		$userids = array();
-		$i = 0;
-		$wichtelIds;
-		$user_one = "";
-		$user_two = "";
-
-		while ($row = mysqli_fetch_row($participants)) {
-			$userids[$i] = $row[0];
-			$i++;
-		}
-
-		$usedIds = array();
-		$otherIds = $userids;
-
-		shuffle($userids);
-
-		for ($j = 0; $j < count($userids); $j++) {
-			$user_one = $userids[$j];
-			$user_two = $otherIds[$j];
-
-			if ($user_one == $user_two) {
-				shuffle($userids);
-				$j--;
-			} else if (in_array($user_one, $usedIds)) {
-				shuffle($userids);
-				$j--;
-			} else {
-				$this -> setWichtel($user_one, $user_two);
-				array_push($usedIds, $userids[$j]);
-			}
-		}
-	}
-
-	public function setWichtel($one, $two) {
-		$query = "UPDATE  participants SET  chosePerson =  '$two' WHERE userid = $one";
-		$result = $this -> connection -> query($query);
-		$query = "UPDATE  participants SET  pickedBy =  '$one' WHERE userid = $two";
-		$result = $this -> connection -> query($query);
-	}
-
-	public function getLuckyPerson($username) {
-		$query = "SELECT chosePerson FROM participants WHERE username = '$username'";
-		$result = $this -> connection -> query($query);
-
-		while ($row = $result -> fetch_assoc()) {
-			$choseId = $row['chosePerson'];
-		}
-
-		$query = "SELECT firstname, lastname FROM participants WHERE userid = $choseId";
-		$result = $this -> connection -> query($query);
-
-		while ($row = $result -> fetch_assoc()) {
-			$luckyPerson = $row['firstname'] . " " . $row['lastname'];
-		}
-
-		return $luckyPerson;
-	}
-
-	public function setParticipant($str) {
-		$query = "UPDATE  participants SET  willParticipate =  '1' WHERE  username = '$str'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function getEmailAddress($str) {
-		$str = strtolower($str);
-		$query = "SELECT firstname, email, confirmationHash FROM participants WHERE username = '$str'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function setGotEmail($str) {
-		$query = "UPDATE  participants SET  gotEmail =  '1' WHERE  username = '$str'";
-		$result = $this -> connection -> query($query);
-	}
-
-	public function registerUser($nickName, $email, $confirmationHash) {
-		$nickLow = strtolower($nickName);
-		$email = strtolower($email);
-		$query = "INSERT INTO `participants` (`firstname`, `lastname`, `username`, `password`, `chosePerson`, `pickedBy`, `userid`, `willParticipate`, `email`, `gotEmail`, `confirmationHash`) VALUES ('$nickName', '', '$nickLow', '', '0', '0', NULL, '0', '$email', '0', '$confirmationHash')";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function confirmRegistration($email, $confirmationHash) {
-		$email = strtolower($email);
-		$query = "SELECT username, gotEmail FROM participants WHERE email = '$email' AND confirmationHash = '$confirmationHash'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function confirmParticipation($email, $confirmationHash) {
-		$email = strtolower($email);
-		$query = "SELECT username, gotEmail FROM participants WHERE email = '$email' AND confirmationHash = '$confirmationHash' AND gotEmail = '1'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function getRegisteredUsers() {
-		$query = "SELECT username FROM participants WHERE gotEmail = '1'";
-		$result = $this -> connection -> query($query);
-		return $result;
-	}
-
-	public function getUserByEmail($email) {
-		$email = strtolower($email);
-		$query = "SELECT username, gotEmail, willParticipate FROM participants WHERE email = '$email'";
+	public function getUserByName($username) {
+		$username = strtolower($username);
+		$query = "SELECT username, password FROM bd_users WHERE username = '$username'";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -421,7 +426,8 @@ function confirmAdmin($str) {
 	}
 }
 
-function checkMaster($str) {
+function validateUser($user, $pw) {
+
 	if (md5($str) == "78a575be3a8d26aa990a2685069da168") {
 		echo "<form id='whoAreYouForm' class='leftMargin'>";
 		echo "<table>";

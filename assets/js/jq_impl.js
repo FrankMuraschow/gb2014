@@ -384,7 +384,45 @@ function positionWrapper(event) {
                 $(this).removeClass('active hover');
             }
             // $(this).css('border-color', "#fff #fff #eee #fff");
+        });        
+        
+
+        $('#btnPassword').on("click", function () {
+            // errorMessage('hide');
+            var userVal = $("#tbUser").val(),
+            pwVal = $("#tbPassword").val();
+            
+            $.ajax({
+                url: "././dbConnectController.php",
+                type: "POST",
+                data: ({
+                    action: "validateUser",
+                    user: userVal, 
+                    pw : pwVal                    
+                }),
+                dataType: "text",
+                success: function (result) {
+                    var resultLength = $.trim(result).length,
+                        content = $('#dynamicContent > div:first-child');
+                    if (resultLength === 0) {
+                        errorMessage('show', 'Falsches Passwort');
+                        $('#masterPw').focus();
+                    } else {
+                        content.fadeOut(300, function () {
+                            content.html(result);
+                            content.fadeIn({
+                                duration: 300,
+                                complete: function () {
+                                    $('#nickName').focus();
+                                }
+                            });
+                        });
+                    }
+                }
+            });
         });
+
+        
 
         $('#masterPw').on("click", function () {
             if ($('#masterPw').val() !== "") {
@@ -549,39 +587,6 @@ function positionWrapper(event) {
                 errorMessage('hide');
             }
         });
-
-        $('#masterPwClick').on("click", function () {
-            errorMessage('hide');
-            var masterPw = $("#masterPw").val();
-            $.ajax({
-                url: "././dbConnectController.php",
-                type: "POST",
-                data: ({
-                    action: "checkMaster",
-                    str: masterPw
-                }),
-                dataType: "text",
-                success: function (result) {
-                    var resultLength = $.trim(result).length,
-                        content = $('#dynamicContent > div:first-child');
-                    if (resultLength === 0) {
-                        errorMessage('show', 'Falsches Passwort');
-                        $('#masterPw').focus();
-                    } else {
-                        content.fadeOut(300, function () {
-                            content.html(result);
-                            content.fadeIn({
-                                duration: 300,
-                                complete: function () {
-                                    $('#nickName').focus();
-                                }
-                            });
-                        });
-                    }
-                }
-            });
-        });
-
         $('.bigButton').on('click', bigButtonClick);
 
         $('.bigButton').on('slideInProgress', function () {
