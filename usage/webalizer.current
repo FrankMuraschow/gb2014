@@ -1,7 +1,7 @@
-# Webalizer V2.23-08 Incremental Data - 05/18/2014 11:12:00
-2014 5 18 11 12 0
-2221 2103 13 29 3 6 74490669 310 16 0
-1 12 277 11 18
+# Webalizer V2.23-08 Incremental Data - 05/22/2014 00:19:05
+2014 5 22 0 19 5
+2513 2393 15 30 3 6 79411356 360 20 0
+1 83 277 11 22
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -20,6 +20,10 @@
 50 45 901941 2 4 2
 434 428 8001578 1 37 1
 194 184 3350676 1 17 2
+209 207 3586927 1 33 3
+66 66 1111375 1 11 1
+0 0 0 0 0 0
+17 17 222385 1 6 1
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -29,11 +33,7 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-73 59 1132355 16
+156 142 2466115 33
 12 12 304685 3
 0 0 0 0
 0 0 0 0
@@ -55,12 +55,12 @@
 277 275 10444798 46
 185 181 6615547 32
 111 98 3169830 18
-412 407 14117854 57
-270 232 4710370 37
+452 447 14793881 64
+439 399 7621270 63
 0
 0
 0
-2103
+2393
 0
 0
 0
@@ -92,7 +92,7 @@
 0
 0
 0
-0
+2
 0
 0
 0
@@ -102,11 +102,11 @@
 /assets/img/vormittag.jpg
 1 4 0 1137564 0 0
 /assets/font/DroidSans.woff
-0 65 0 1824031 0 0
+0 87 0 2434047 0 0
 /assets/font/DroidSansBold.woff
-0 64 0 1851392 0 0
+0 86 0 2487808 0 0
 /assets/font/BebasNeue.woff
-0 63 0 1294020 0 0
+0 85 0 1745900 0 0
 /assets/css/BebasNeue.ttf
 0 60 0 7412760 0 0
 /assets/css/bootstrap.min.css
@@ -115,12 +115,14 @@
 0 1 0 191032 0 0
 /assets/font/DroidSans.eot
 0 9 0 206937 0 0
+/dbConnectController.php
+0 26 0 23427 1 2
 /assets/font/DroidSansBold.eot
 0 6 0 128100 0 0
 /assets/js/jq.js
-1 300 0 23407820 0 0
+1 322 0 25287280 0 0
 /assets/img/contentBgs/provision_bg.png
-1 91 0 911538 0 0
+1 113 0 1136862 0 0
 /assets/img/mittag.jpg
 1 7 0 16248891 0 0
 /assets/img/contentBgs/accomendation_bg.png
@@ -128,35 +130,35 @@
 /assets/font/BebasNeue.ttf
 0 76 0 9171720 0 0
 /assets/img/contentBgs/transportation_bg.png
-1 85 0 942050 0 0
+1 107 0 1191750 0 0
 /assets/font/BebasNeue.eot
 0 11 0 719590 0 0
-/assets/img/contentBgs/attendance_bg.png
-1 97 0 1868309 0 0
 /assets/img/congruent_outline.png
 1 184 0 1524925 0 0
+/assets/img/contentBgs/attendance_bg.png
+1 119 0 2334335 0 0
 /assets/css/BebasNeue.eot
 0 2 0 251712 0 0
 /assets/img/contentBgs/accommodation_bg.png
-1 53 0 550056 0 0
+1 75 0 782772 0 0
 /assets/js/jq_impl.js
-1 301 0 1035359 0 0
+1 323 0 1066879 0 0
 /assets/img/congruent_pentagon.png
 1 22 0 462944 0 0
 /assets/font/BebasNeue_Light.ttf
 0 10 0 1305240 0 0
 /
-0 309 0 231764 16 3
+0 331 0 255436 19 3
 /assets/font/DroidSans.ttf
 0 5 0 484950 0 0
 /assets/font/BebasNeue_Light.eot
 0 1 0 57096 0 0
 /assets/img/black_lozenge.png
-1 46 0 12510 0 0
+1 68 0 18626 0 0
 /assets/img/hoffman.png
 1 1 0 95 0 0
 /assets/css/style.css
-1 303 0 945640 0 0
+1 325 0 1029350 0 0
 # End Of Table - urls
 # -sites- (monthly)
 p4ff9653f.dip0.t-ipconnect.de
@@ -168,12 +170,18 @@ p4ff966e9.dip0.t-ipconnect.de
 p4feea6f7.dip0.t-ipconnect.de
 0 24 23 455956 1 1400262804
 /
+p5080f6ea.dip0.t-ipconnect.de
+0 17 17 222385 1 1400717945
+/dbConnectController.php
 p3e9c2924.dip0.t-ipconnect.de
 0 46 40 1186385 1 1400105671
 /
 p4feeabe9.dip0.t-ipconnect.de
 0 358 356 9255180 1 1400197305
 /
+p3e9c2efe.dip0.t-ipconnect.de
+0 275 273 4698302 3 1400544324
+/dbConnectController.php
 p5080f1d8.dip0.t-ipconnect.de
 0 194 184 3350676 2 1400411520
 /
@@ -200,17 +208,17 @@ p4ff96607.dip0.t-ipconnect.de
 /
 # End Of Table - sites (monthly)
 # -sites- (daily)
-p5080f1d8.dip0.t-ipconnect.de
-0 194 184 3350676 2 1400411520
-/
+p5080f6ea.dip0.t-ipconnect.de
+0 17 17 222385 1 1400717945
+/dbConnectController.php
 # End Of Table - sites (daily)
 # -referrers- 
 http://bd2014.netznova.de/assets/css/style.css
 1 4
 http://bd2014.netznova.de/
-1 1903
+1 2173
 - (Direct Request)
-0 314
+0 336
 # End Of Table - referrers
 # -agents- 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
@@ -218,7 +226,7 @@ Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrom
 Browser: Firefox
 2 12
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36
-1 580
+1 872
 Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
 0 217
 Mozilla/5.0 (Windows NT 6.2; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0
@@ -226,7 +234,7 @@ Mozilla/5.0 (Windows NT 6.2; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0
 Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36
 1 26
 Browser: Safari
-2 1992
+2 2284
 Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
 1 16
 # End Of Table - agents

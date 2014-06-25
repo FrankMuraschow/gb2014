@@ -4,6 +4,7 @@
 	<title>Attaque du zombie et diablotin</title>
 	<link rel="stylesheet" href="assets/css/style.css?ref=2" type="text/css" />
 	<script src="assets/js/jq.js?ref=2" type ="text/javascript"></script>
+	<script src="assets/js/jquery-ui-1.10.4.custom.js?ref=2" type ="text/javascript"></script>
 	<script src="assets/js/jq_impl.js?ref=2" type ="text/javascript"></script>
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
 	<!--[if gte IE 9]>

@@ -86,7 +86,8 @@ jQuery(function($) {"use strict";
             that.removeClass('active');
         });
 
-        $('#btnPassword').on('click', function() {
+        function btnPassWordClick() {
+            $('#btnPassword').off().addClass('black');
             console.log($('#tbUser').val());
             console.log($('#tbPassword').val());
             $.ajax({
@@ -97,13 +98,41 @@ jQuery(function($) {"use strict";
                     usr : $('#tbUser').val(),
                     pw : $('#tbPassword').val()
                 }),
-                dataType : "text",
-                success : function(result) {
-                    console.log(result);
-                    result = $.trim(result);
+                dataType : "text"
+            }).done(function(result) {
+                console.log(result);
+                result = $.trim(result);
+                if (result === "LOGIN FAILED") {
+                    $('.content').effect('shake', {
+                        direction : "left",
+                        distance : 5,
+                        times : 1
+                    });
+                } else {
+                    $('#ctnLogin .table-row').fadeOut();                    
+                    $('#btnLogin').fadeOut();
+                    $('#btnAttendance').fadeIn(400, function() {
+                        $('#btnAttendance').trigger('click');
+                        $('#btnProvision').fadeIn(400, function() {
+                            $('#btnLocation').fadeIn(400, function() {
+                                $('#btnAccommodation').fadeIn(400);
+                            });
+                        });
+                    });
                 }
+            }).fail(function(result) {
+                $('.bigButtonContainer').effect('shake', {
+                    distance : 10,
+                    times : 2
+                });
+                console.log(result);
+            }).always(function() {
+                $('#btnPassword').on('click', btnPassWordClick).removeClass('black');
             });
-        })
+        }
+
+
+        $('#btnPassword').on('click', btnPassWordClick);
 
         $(window).on('resize', positionWrapper);
 
