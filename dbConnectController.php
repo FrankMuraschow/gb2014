@@ -132,7 +132,7 @@ function validateUser($usr, $pw) {
 
 	if ($result -> num_rows > 0) {
 		while ($row = $result -> fetch_assoc()) {
-			echo $row[conf::USR_FNAME] . " " . $row[conf::USR_LNAME];
+			echo conf::NAV;
 		}
 	} else {
 		echo "LOGIN FAILED";

@@ -1,3 +1,20 @@
+jQuery.fn.bdValidate = function() {"use strict";
+    var value = "";
+    if (this[0].tagName.toLowerCase() === "input") {
+        value = this.val();
+    } else {
+        value = this.text();
+    }
+
+    if (value === "") {
+        this.addClass('error');
+        return false;
+    } else {
+        this.removeClass('error');
+        return true;
+    }
+};
+
 jQuery(function($) {"use strict";
 
     function getParameter(paramName) {
@@ -68,6 +85,11 @@ jQuery(function($) {"use strict";
                 that.val('Passwort');
             }
             that.removeClass('active');
+        }).on('keyup', function(e) {
+            var code = e.keyCode || e.which;
+            if (code === 13) {
+                btnPassWordClick();
+            }
         });
 
         $('#tbUser').on('focus', function() {
@@ -84,66 +106,86 @@ jQuery(function($) {"use strict";
                 that.val('Nutzername');
             }
             that.removeClass('active');
+        }).on('keyup', function(e) {
+            var code = e.keyCode || e.which;
+            if (code === 13) {
+                btnPassWordClick();
+            }
         });
 
         function btnPassWordClick() {
-            $('#btnPassword').off().addClass('black');
-            console.log($('#tbUser').val());
-            console.log($('#tbPassword').val());
-            $.ajax({
-                url : "././dbConnectController.php",
-                type : "POST",
-                data : ( {
-                    action : "validateUser",
-                    usr : $('#tbUser').val(),
-                    pw : $('#tbPassword').val()
-                }),
-                dataType : "text"
-            }).done(function(result) {
-                console.log(result);
-                result = $.trim(result);
-                if (result === "LOGIN FAILED") {
-                    $('.content').effect('shake', {
-                        direction : "left",
-                        distance : 5,
-                        times : 1
-                    });
-                } else {
-                    $('#ctnLogin .table-row').fadeOut();                    
-                    $('#btnLogin').fadeOut();
-                    $('#btnAttendance').fadeIn(400, function() {
-                        $('#btnAttendance').trigger('click');
-                        $('#btnProvision').fadeIn(400, function() {
-                            $('#btnLocation').fadeIn(400, function() {
-                                $('#btnAccommodation').fadeIn(400);
+            var check = ($('#tbUser').bdValidate() && $('#tbPassword').bdValidate())
+
+            if (check) {
+                $('#btnPassword').off().addClass('black');
+                $('#pwLoader').removeClass('hidden');
+                $.ajax({
+                    url : "././dbConnectController.php",
+                    type : "POST",
+                    data : ( {
+                        action : "validateUser",
+                        usr : $('#tbUser').val(),
+                        pw : $('#tbPassword').val()
+                    }),
+                    dataType : "text"
+                }).done(function(result) {
+                    result = $.trim(result);
+                    if (result === "LOGIN FAILED") {
+                        $('.content').effect('shake', {
+                            direction : "left",
+                            distance : 5,
+                            times : 1
+                        });
+                    } else {
+                        $('nav').prepend(result);
+                        $('#ctnLogin .table-row').fadeOut();
+                        $('#btnAttendance').fadeIn(400, function() {
+                            $('#btnAttendance').trigger('click');
+                            $('#btnProvision').fadeIn(400, function() {
+                                $('#btnLocation').fadeIn(400, function() {
+                                    $('#btnAccommodation').fadeIn(400);
+                                });
                             });
                         });
+                        $('#btnLogin').text('Logout').attr('id', 'btnLogout');
+                    }
+                }).fail(function(result) {
+                    $('.bigButtonContainer').effect('shake', {
+                        distance : 10,
+                        times : 2
                     });
-                }
-            }).fail(function(result) {
-                $('.bigButtonContainer').effect('shake', {
-                    distance : 10,
-                    times : 2
+                    console.log(result);
+                }).always(function() {
+                    $('#btnPassword').on('click', btnPassWordClick).removeClass('black');
+                    $('#pwLoader').addClass('hidden');
                 });
-                console.log(result);
-            }).always(function() {
-                $('#btnPassword').on('click', btnPassWordClick).removeClass('black');
-            });
+            }
         }
 
+        function btnLogoutClick() {
+            $('#tbUser').val("Nutzername").trigger('blur');
+            $('#tbPassword').val("Passwort").trigger('blur');
+            $('nav').children('div').not('#btnLogout').remove();
+            $('#ctnLogin .table-row').show();
+            $('#btnLogout').text('Login');
+            $('#btnLogout').attr('id', 'btnLogin');
+        }
 
-        $('#btnPassword').on('click', btnPassWordClick);
+        // EVENT BINDING
 
         $(window).on('resize', positionWrapper);
 
-        $('.navButton').on('click', positionWrapper).on('mouseover', function() {
+        $('nav').on('click', '.navButton', positionWrapper).on('mouseover', '.navButton', function() {
             if ($(this).hasClass('active') === false) {
                 $(this).addClass('active hover');
             }
-        }).on('mouseleave', function() {
+        }).on('mouseleave', '.navButton', function() {
             if ($(this).hasClass('hover') === true) {
                 $(this).removeClass('active hover');
             }
         });
+
+        $('nav').on('click', '#btnLogout', btnLogoutClick);
+        $('#btnPassword').on('click', btnPassWordClick);
     });
 });

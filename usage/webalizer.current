@@ -1,7 +1,7 @@
-# Webalizer V2.23-08 Incremental Data - 05/22/2014 00:19:05
-2014 5 22 0 19 5
-2513 2393 15 30 3 6 79411356 360 20 0
-1 83 277 11 22
+# Webalizer V2.23-08 Incremental Data - 06/25/2014 23:52:32
+2014 6 25 23 52 32
+321 308 1 14 2 1 4620999 81 1 0
+1 404 404 25 25
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -12,18 +12,6 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-157 142 20489786 2 35 2
-97 66 1232795 1 22 2
-867 827 29600589 3 151 4
-52 46 1413982 2 8 2
-370 365 9499322 2 36 2
-50 45 901941 2 4 2
-434 428 8001578 1 37 1
-194 184 3350676 1 17 2
-209 207 3586927 1 33 3
-66 66 1111375 1 11 1
-0 0 0 0 0 0
-17 17 222385 1 6 1
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -33,52 +21,46 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-156 142 2466115 33
-12 12 304685 3
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+321 308 4620999 1 81 1
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
-6 6 227597 1
-94 94 1778016 9
-98 88 1558880 9
-286 282 5404463 30
-259 243 21954344 29
-58 54 1288238 13
 0 0 0 0
-26 22 445985 2
 0 0 0 0
-24 23 455956 2
-30 27 881751 6
-277 275 10444798 46
-185 181 6615547 32
-111 98 3169830 18
-452 447 14793881 64
-439 399 7621270 63
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+321 308 4620999 81
 0
 0
 0
-2393
-0
-0
-0
-0
-0
-2
-0
-0
-0
-0
-99
-0
-0
-0
-0
-0
-1
-16
+308
 0
 0
 0
@@ -89,154 +71,84 @@
 0
 0
 0
+13
 0
 0
 0
-2
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
 0
 0
 0
 0
 0
 # -urls- 
-/assets/img/vormittag.jpg
-1 4 0 1137564 0 0
 /assets/font/DroidSans.woff
-0 87 0 2434047 0 0
+0 20 25445184 526832 0 0
 /assets/font/DroidSansBold.woff
-0 86 0 2487808 0 0
+0 20 25445056 549632 0 0
 /assets/font/BebasNeue.woff
-0 85 0 1745900 0 0
-/assets/css/BebasNeue.ttf
-0 60 0 7412760 0 0
-/assets/css/bootstrap.min.css
-1 2 0 34324 0 0
-/assets/font/DroidSans-Bold.ttf
-0 1 0 191032 0 0
-/assets/font/DroidSans.eot
-0 9 0 206937 0 0
+0 20 25444928 390260 0 0
 /dbConnectController.php
-0 26 0 23427 1 2
-/assets/font/DroidSansBold.eot
-0 6 0 128100 0 0
+0 58 25445872 2328 0 0
 /assets/js/jq.js
-1 322 0 25287280 0 0
+1 20 25444688 1623170 0 0
 /assets/img/contentBgs/provision_bg.png
-1 113 0 1136862 0 0
-/assets/img/mittag.jpg
-1 7 0 16248891 0 0
-/assets/img/contentBgs/accomendation_bg.png
-1 26 0 275028 0 0
-/assets/font/BebasNeue.ttf
-0 76 0 9171720 0 0
+1 20 25445456 194598 0 0
+/assets/js/jquery-ui-1.10.4.custom.js
+1 19 25446000 389232 0 0
 /assets/img/contentBgs/transportation_bg.png
-1 107 0 1191750 0 0
-/assets/font/BebasNeue.eot
-0 11 0 719590 0 0
-/assets/img/congruent_outline.png
-1 184 0 1524925 0 0
+1 20 25445584 215650 0 0
 /assets/img/contentBgs/attendance_bg.png
-1 119 0 2334335 0 0
-/assets/css/BebasNeue.eot
-0 2 0 251712 0 0
+1 20 25445312 402477 0 0
 /assets/img/contentBgs/accommodation_bg.png
-1 75 0 782772 0 0
+1 20 25445728 200982 0 0
 /assets/js/jq_impl.js
-1 323 0 1066879 0 0
-/assets/img/congruent_pentagon.png
-1 22 0 462944 0 0
-/assets/font/BebasNeue_Light.ttf
-0 10 0 1305240 0 0
+1 21 25444576 22771 0 0
 /
-0 331 0 255436 19 3
-/assets/font/DroidSans.ttf
-0 5 0 484950 0 0
-/assets/font/BebasNeue_Light.eot
-0 1 0 57096 0 0
+0 23 10 25392 1 0
 /assets/img/black_lozenge.png
-1 68 0 18626 0 0
-/assets/img/hoffman.png
-1 1 0 95 0 0
+1 20 25444800 5282 0 0
 /assets/css/style.css
-1 325 0 1029350 0 0
+1 20 25444368 72393 0 0
 # End Of Table - urls
 # -sites- (monthly)
-p4ff9653f.dip0.t-ipconnect.de
-0 12 9 244142 1 1400160355
-/
-p4ff966e9.dip0.t-ipconnect.de
-0 10 10 202444 1 1399974106
-/
-p4feea6f7.dip0.t-ipconnect.de
-0 24 23 455956 1 1400262804
-/
-p5080f6ea.dip0.t-ipconnect.de
-0 17 17 222385 1 1400717945
+p4feeadb0.dip0.t-ipconnect.de
+0 321 308 4620999 1 1403740352
 /dbConnectController.php
-p3e9c2924.dip0.t-ipconnect.de
-0 46 40 1186385 1 1400105671
-/
-p4feeabe9.dip0.t-ipconnect.de
-0 358 356 9255180 1 1400197305
-/
-p3e9c2efe.dip0.t-ipconnect.de
-0 275 273 4698302 3 1400544324
-/dbConnectController.php
-p5080f1d8.dip0.t-ipconnect.de
-0 194 184 3350676 2 1400411520
-/
-p3e9c23a7.dip0.t-ipconnect.de
-0 434 428 8001578 1 1400329300
-/
-p4feea67f.dip0.t-ipconnect.de
-0 12 12 304685 1 1399770853
-/
-p3e9c3b99.dip0.t-ipconnect.de
-0 784 758 28265790 2 1400022247
-/
-p4ff967ca.dip0.t-ipconnect.de
-0 6 6 227597 1 1400055024
-/
-p3e9c3463.dip0.t-ipconnect.de
-0 145 132 20185101 1 1399814224
-/
-p5080f3ce.dip0.t-ipconnect.de
-0 170 125 2365150 2 1399939712
-/
-p4ff96607.dip0.t-ipconnect.de
-0 26 22 445985 1 1400255484
-/
 # End Of Table - sites (monthly)
 # -sites- (daily)
-p5080f6ea.dip0.t-ipconnect.de
-0 17 17 222385 1 1400717945
+p4feeadb0.dip0.t-ipconnect.de
+0 321 308 4620999 1 1403740352
 /dbConnectController.php
 # End Of Table - sites (daily)
 # -referrers- 
-http://bd2014.netznova.de/assets/css/style.css
-1 4
 http://bd2014.netznova.de/
-1 2173
+1 298
 - (Direct Request)
-0 336
+0 23
 # End Of Table - referrers
 # -agents- 
-Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
-1 1370
-Browser: Firefox
-2 12
-Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36
-1 872
-Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
-0 217
-Mozilla/5.0 (Windows NT 6.2; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0
-1 12
-Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36
-1 26
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+1 321
 Browser: Safari
-2 2284
-Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
-1 16
+2 321
 # End Of Table - agents
 # -search strings- 
 # End Of Table - search strings
