@@ -1,7 +1,7 @@
-# Webalizer V2.23-08 Incremental Data - 06/25/2014 23:52:32
-2014 6 25 23 52 32
-321 308 1 14 2 1 4620999 81 1 0
-1 404 404 25 25
+# Webalizer V2.23-08 Incremental Data - 06/26/2014 23:42:39
+2014 6 26 23 42 39
+894 854 1 15 2 1 14172573 156 2 0
+1 284 404 25 26
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -27,12 +27,12 @@
 0 0 0 0 0 0
 0 0 0 0 0 0
 321 308 4620999 1 81 1
+573 546 9551574 1 75 1
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
@@ -55,15 +55,12 @@
 0 0 0 0
 0 0 0 0
 0 0 0 0
-0 0 0 0
-321 308 4620999 81
+289 286 5133584 34
+605 568 9038989 122
 0
 0
 0
-308
-0
-0
-0
+854
 0
 0
 0
@@ -71,7 +68,10 @@
 0
 0
 0
-13
+0
+0
+0
+40
 0
 0
 0
@@ -100,55 +100,57 @@
 0
 # -urls- 
 /assets/font/DroidSans.woff
-0 20 25445184 526832 0 0
+0 61 0 1608224 0 0
 /assets/font/DroidSansBold.woff
-0 20 25445056 549632 0 0
+0 61 0 1677824 0 0
 /assets/font/BebasNeue.woff
-0 20 25444928 390260 0 0
+0 61 0 1191320 0 0
 /dbConnectController.php
-0 58 25445872 2328 0 0
+0 91 0 6726 0 1
 /assets/js/jq.js
-1 20 25444688 1623170 0 0
+1 61 0 4954940 0 0
 /assets/img/contentBgs/provision_bg.png
-1 20 25445456 194598 0 0
+1 61 0 594036 0 0
 /assets/js/jquery-ui-1.10.4.custom.js
-1 19 25446000 389232 0 0
+1 61 0 1232568 0 0
 /assets/img/contentBgs/transportation_bg.png
-1 20 25445584 215650 0 0
+1 61 0 658300 0 0
 /assets/img/contentBgs/attendance_bg.png
-1 20 25445312 402477 0 0
+1 61 0 1228614 0 0
 /assets/img/contentBgs/accommodation_bg.png
-1 20 25445728 200982 0 0
+1 61 0 613524 0 0
 /assets/js/jq_impl.js
-1 21 25444576 22771 0 0
+1 63 0 79499 0 0
 /
-0 23 10 25392 1 0
+0 65 0 81952 2 0
+/assets/img/ajax_loader_bars.gif
+1 3 38821152 5946 0 0
 /assets/img/black_lozenge.png
-1 20 25444800 5282 0 0
+1 61 0 16124 0 0
 /assets/css/style.css
-1 20 25444368 72393 0 0
+1 62 0 222976 0 0
 # End Of Table - urls
 # -sites- (monthly)
 p4feeadb0.dip0.t-ipconnect.de
-0 321 308 4620999 1 1403740352
+0 894 854 14172573 2 1403826159
 /dbConnectController.php
 # End Of Table - sites (monthly)
 # -sites- (daily)
 p4feeadb0.dip0.t-ipconnect.de
-0 321 308 4620999 1 1403740352
+0 573 546 9551574 1 1403826159
 /dbConnectController.php
 # End Of Table - sites (daily)
 # -referrers- 
 http://bd2014.netznova.de/
-1 298
+1 829
 - (Direct Request)
-0 23
+0 65
 # End Of Table - referrers
 # -agents- 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
-1 321
+1 894
 Browser: Safari
-2 321
+2 894
 # End Of Table - agents
 # -search strings- 
 # End Of Table - search strings

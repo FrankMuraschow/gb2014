@@ -28,6 +28,22 @@ jQuery(function($) {"use strict";
         return null;
     }
 
+    function processAttendance() {
+
+        $.ajax({
+            url : "././dbConnectController.php",
+            type : "POST",
+            data : ( {
+                action : "getAttendance"
+            }),
+            dataType : "text"
+        }).done(function(result) {
+            console.log('result: ' + result);
+            $('.checkbox').removeClass('selected');
+            // $('.checkbox:data(value==' + result + ')').addClass('selected');
+        }).fail().always();
+    }
+
     function positionWrapper(event) {
         var innerWrap = $('#innerWrapper'), body = $('body'), marVal = innerWrap.css('margin-left'), bgImg, windowWidth1015 = $(window).width() <= 1015, resizeEvent = event.type === "resize", that;
 
@@ -42,6 +58,7 @@ jQuery(function($) {"use strict";
 
         switch (that.attr('id')) {
             case "btnAttendance":
+                processAttendance();
                 marVal = windowWidth1015 ? -1190 : -1390;
                 break;
             case "btnProvision":
@@ -65,6 +82,24 @@ jQuery(function($) {"use strict";
                 innerWrap.addClass('transisitionAllMed');
             }, 1);
         }
+    }
+
+    function showNavInstant() {
+        $('#btnAttendance').trigger('click');
+        $('#btnLogin').text('Logout').attr('id', 'btnLogout');
+    }
+
+    function showNav() {
+        $('#btnLogin').text('Logout').attr('id', 'btnLogout');
+        //$('#ctnLogin .table-row').fadeOut();
+        $('#btnAttendance').fadeIn(400, function() {
+            $('#btnAttendance').trigger('click');
+            $('#btnProvision').fadeIn(400, function() {
+                $('#btnLocation').fadeIn(400, function() {
+                    $('#btnAccommodation').fadeIn(400);
+                });
+            });
+        });
     }
 
 
@@ -138,37 +173,36 @@ jQuery(function($) {"use strict";
                         });
                     } else {
                         $('nav').prepend(result);
-                        $('#ctnLogin .table-row').fadeOut();
-                        $('#btnAttendance').fadeIn(400, function() {
-                            $('#btnAttendance').trigger('click');
-                            $('#btnProvision').fadeIn(400, function() {
-                                $('#btnLocation').fadeIn(400, function() {
-                                    $('#btnAccommodation').fadeIn(400);
-                                });
-                            });
-                        });
-                        $('#btnLogin').text('Logout').attr('id', 'btnLogout');
+                        showNav();
                     }
                 }).fail(function(result) {
+                    $('#pwLoader').addClass('hidden');
+                    $('#btnPassword').on('click', btnPassWordClick).removeClass('black');
                     $('.bigButtonContainer').effect('shake', {
                         distance : 10,
                         times : 2
                     });
                     console.log(result);
                 }).always(function() {
-                    $('#btnPassword').on('click', btnPassWordClick).removeClass('black');
-                    $('#pwLoader').addClass('hidden');
                 });
             }
         }
 
         function btnLogoutClick() {
-            $('#tbUser').val("Nutzername").trigger('blur');
-            $('#tbPassword').val("Passwort").trigger('blur');
-            $('nav').children('div').not('#btnLogout').remove();
-            $('#ctnLogin .table-row').show();
-            $('#btnLogout').text('Login');
-            $('#btnLogout').attr('id', 'btnLogin');
+            $.ajax({
+                url : "././dbConnectController.php",
+                type : "POST",
+                data : ( {
+                    action : "logoutUser"
+                })
+            }).always(function() {
+                $('#tbUser').val("Nutzername").trigger('blur');
+                $('#tbPassword').val("Passwort").trigger('blur');
+                $('nav').children('div').not('#btnLogout').remove();
+                $('#ctnLogin .table-row').show();
+                $('#btnLogout').text('Login');
+                $('#btnLogout').attr('id', 'btnLogin');
+            });
         }
 
         // EVENT BINDING

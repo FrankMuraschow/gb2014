@@ -52,7 +52,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed                  :
+	position: fixed                   :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -194,6 +194,37 @@ input {
 	text-decoration: underline;
 }
 
+.checkbox {
+	cursor: pointer;
+	color: #ccc;
+	margin: 5px;
+	border: 1px solid #ccc;
+	background: #444;
+}
+
+.checkbox:hover {
+	border-color: #fff;
+	color: #fff;
+	background: #222;
+}
+
+.checkbox.small {
+	margin: 0 15px;
+	min-width: 140px;
+	font-size: 18pt;
+}
+
+.checkbox.big {
+	font-size: 30pt;
+}
+
+.checkbox.selected {
+	background: #FD9206;
+	border: 2px solid white;
+	color: white;
+	font-weight: bold;
+}
+
 #ctnLogin .introText {
 	background-color: #1e0100;
 }
@@ -292,12 +323,6 @@ input {
 	display: table-cell;
 }
 
-.bigButtonContainer {
-	height: 50px;
-	width: 400px;
-	margin: -25px 0 0 -200px;
-}
-
 .bdTextfield {
 	color: #444;
 }
@@ -316,7 +341,7 @@ input {
 .bdButton {
 	cursor: pointer;
 	color: #ddd;
-	background: #111;
+	background: #222;
 	text-align: center;
 }
 

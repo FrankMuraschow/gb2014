@@ -3,14 +3,25 @@ function __autoload($class_name) {
 	require_once $class_name . '.php';
 }
 
+session_start();
 if (isset($_POST['action']) && !empty($_POST['action'])) {
 	$action = $_POST['action'];
+
 	switch($action) {
 		case 'validateUser' :
 			validateUser($_POST['usr'], $_POST['pw']);
 			break;
+		case 'getAttendance' :
+			getAttendance();
+			break;
+		case 'setAttendance' :
+			setAttendance($_POST['val']);
+			break;
 		case 'createUsernameAndSalt' :
-			createUsernameAndSalt();
+			//createUsernameAndSalt();
+			break;
+		case 'logoutUser' :
+			logoutUser();
 			break;
 	}
 }
@@ -50,7 +61,7 @@ class dbConnectController {
 
 	public function getUserSalt($usr) {
 		$usr = strtolower($usr);
-		$query = "SELECT " . conf::USR_SALT . " FROM " . conf::DB_USR . " WHERE " . conf::USR_NAME . " = '$usr'";
+		$query = "SELECT " . conf::USR_SALT . " FROM " . conf::TBL_USR . " WHERE " . conf::USR_NAME . " = '$usr'";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -64,13 +75,32 @@ class dbConnectController {
 
 	public function checkUserCredentials($usr, $pw) {
 		$usr = strtolower($usr);
-		$query = "SELECT * FROM " . conf::DB_USR . " WHERE " . conf::USR_NAME . " = '$usr' AND " . conf::USR_PW . " = '$pw'";
+		$query = "SELECT * FROM " . conf::TBL_USR . " WHERE " . conf::USR_NAME . " = '$usr' AND " . conf::USR_PW . " = '$pw'";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
 
-	public function createUsernameAndSalt($usr, $fn, $ln, $pw, $salt) {
-		$query = "INSERT INTO `" . conf::DB_USR . "` (`" . conf::USR_FNAME . "`, `" . conf::USR_LNAME . "`, `" . conf::USR_NAME . "`, `" . conf::USR_PW . "`, `" . conf::USR_SALT . "`) VALUES ('$fn', '$ln', '$usr', '$pw', '$salt')";
+	// public function createUsernameAndSalt($usr, $fn, $ln, $pw, $salt) {
+	// $query = "INSERT INTO `" . conf::TBL_USR . "` (`" . conf::USR_FNAME . "`, `" . conf::USR_LNAME . "`, `" . conf::USR_NAME . "`, `" . conf::USR_PW . "`, `" . conf::USR_SALT . "`) VALUES ('$fn', '$ln', '$usr', '$pw', '$salt')";
+	// $result = $this -> connection -> query($query);
+	// return $result;
+	// }
+
+	public function setAttendance($val) {
+		if (!isset($_SESSION['usr']) || empty($_SESSION['usr']))
+			return -1;
+
+		$query = "UPDATE " . conf::TBL_USR . "SET `will_participate` =  '" . $val . "' WHERE  `username` =  '" . $_SESSION['usr'] . "'";
+		$result = $this -> connection -> query($query);
+		return $result;
+	}
+
+	public function getAttendance() {
+		return var_dump($_SESSION);
+		if (!isset($_SESSION['usr']))
+			return -1;
+
+		$query = "SELECT `will_participate` FROM " . conf::TBL_USR . " WHERE  `username` =  '" . $_SESSION['usr'] . "'";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -129,8 +159,8 @@ function validateUser($usr, $pw) {
 
 	$pw = md5($salt . $pw);
 	$result = $db -> checkUserCredentials($usr, $pw);
-
 	if ($result -> num_rows > 0) {
+		$_SESSION['usr'] = $usr;
 		while ($row = $result -> fetch_assoc()) {
 			echo conf::NAV;
 		}
@@ -138,6 +168,28 @@ function validateUser($usr, $pw) {
 		echo "LOGIN FAILED";
 	}
 
+	$db -> closeConnection();
+}
+
+function logoutUser() {
+	session_destroy();
+}
+
+function setAttendance($val) {
+	$db = new dbConnectController();
+	$result = $db -> setAttendance($val);
+	$db -> closeConnection();
+	return $result;
+}
+
+function getAttendance() {
+	$db = new dbConnectController();
+	$result = $db -> getAttendance();
+	if ($result) {
+		while ($row = $result -> fetch_assoc()) {
+			echo $row['will_participate'];
+		}
+	}
 	$db -> closeConnection();
 }
 

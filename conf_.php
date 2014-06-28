@@ -8,7 +8,11 @@ class conf {
 	const USR_PART = "";
 	const USR_FNAME = "";
 	const USR_LNAME = "";
-	const DB_USR = "";
+	const TBL_USR = "";
+
+	const SHOW_NAV = "";
+
+	const NAV = "";
 	
 	public function __construct() {
 
