@@ -29,17 +29,13 @@ jQuery(function($) {"use strict";
     }
 
     function processAttendance() {
-
-        $.ajax({
+        return $.ajax({
             url : "././dbConnectController.php",
             type : "POST",
             data : ( {
                 action : "getAttendance"
-            }),
-            dataType : "text"
-        }).done(function(result) {
-            $('.checkbox').removeClass('selected');
-        }).fail().always();
+            })
+        });
     }
 
     function positionWrapper(event) {
@@ -56,7 +52,6 @@ jQuery(function($) {"use strict";
 
         switch (that.attr('id')) {
             case "btnAttendance":
-                processAttendance();
                 marVal = windowWidth1015 ? -1190 : -1390;
                 break;
             case "btnProvision":
@@ -125,6 +120,27 @@ jQuery(function($) {"use strict";
             }
         });
 
+        $('#tbEmail').on('focus', function() {
+            var that = $(this);
+            if (that.val() === "" || that.val() === "Email") {
+                that.removeClass('inital');
+                that.val('');
+            }
+            that.addClass('active');
+        }).on('blur', function() {
+            var that = $(this);
+            if (that.val() === "" || that.val() === "Email") {
+                that.addClass('inital');
+                that.val('Email');
+            }
+            that.removeClass('active');
+        }).on('keyup', function(e) {
+            var code = e.keyCode || e.which;
+            if (code === 13) {
+                btnEmailClick();
+            }
+        });
+
         $('#tbUser').on('focus', function() {
             var that = $(this);
             if (that.val() === "" || that.val() === "Nutzername") {
@@ -147,12 +163,12 @@ jQuery(function($) {"use strict";
         });
 
         function btnPassWordClick() {
-            var check = ($('#tbUser').bdValidate() && $('#tbPassword').bdValidate())
+            var check = ($('#tbUser').bdValidate() && $('#tbPassword').bdValidate()), dfdPw;
 
             if (check) {
-                $('#btnPassword').off().addClass('black');
-                $('#pwLoader').removeClass('hidden');
-                $.ajax({
+                $('#btnPassword').off().addClass('loading');
+                $('#pwLoader').removeClass('hidden'); 
+                dfdPw = $.ajax({
                     url : "././dbConnectController.php",
                     type : "POST",
                     data : ( {
@@ -162,44 +178,64 @@ jQuery(function($) {"use strict";
                     }),
                     dataType : "text"
                 }).done(function(result) {
-                    result = $.trim(result);
-                    if (result === "LOGIN FAILED") {
-                        $('.content').effect('shake', {
-                            direction : "left",
-                            distance : 5,
-                            times : 1
-                        });
-                    } else {
+                    processAttendance().done(function(attendanceResult) {
+                        attendanceResult = $.trim(attendanceResult);
+                        $('.checkbox[data-value=' + attendanceResult + ']').addClass('checked');
+                    }).always(function() {
+                        result = $.trim(result);
                         $('nav').prepend(result);
                         showNav();
-                    }
+                    });
                 }).fail(function(result) {
-                    $('#pwLoader').addClass('hidden');
-                    $('#btnPassword').on('click', btnPassWordClick).removeClass('black');
                     $('.bigButtonContainer').effect('shake', {
                         distance : 10,
                         times : 2
                     });
-                    console.log(result);
+                }).always(function(result) {
+                    $('#pwLoader').addClass('hidden');
+                    $('#btnPassword').on('click', btnPassWordClick).removeClass('loading');
                 });
             }
         }
 
         function btnLogoutClick() {
+            $('#tbUser').val("Nutzername").trigger('blur');
+            $('#tbPassword').val("Passwort").trigger('blur');
+            $('nav').children('div').not('#btnLogout').remove();
+            $('#ctnLogin .table-row').show();
+            $('#btnLogout').text('Login');
+            $('#btnLogout').attr('id', 'btnLogin');
+
             $.ajax({
                 url : "././dbConnectController.php",
                 type : "POST",
                 data : ( {
                     action : "logoutUser"
                 })
-            }).always(function() {
-                $('#tbUser').val("Nutzername").trigger('blur');
-                $('#tbPassword').val("Passwort").trigger('blur');
-                $('nav').children('div').not('#btnLogout').remove();
-                $('#ctnLogin .table-row').show();
-                $('#btnLogout').text('Login');
-                $('#btnLogout').attr('id', 'btnLogin');
             });
+        }
+
+        function btnEmailClick() {
+            var tbEmail = $('#tbEmail'), check = tbEmail.bdValidate(), emailVal = tbEmail.val();
+            if (check) {
+                $('#btnEmail').off().addClass('loading');
+                $('#emailLoader').removeClass('hidden');
+                $.ajax({
+                    url : "././dbConnectController.php",
+                    type : "POST",
+                    data : ( {
+                        action : "setEmail",
+                        val : emailVal
+                    })
+                }).done(function() {
+                    location.reload();
+                }).fail(function() {
+                    tbEmail.addClass('error');
+                }).always(function() {
+                    $('#btnEmail').on('click', btnEmailClick).removeClass('loading');
+                    $('#emailLoader').addClass('hidden');
+                });
+            }
         }
 
         function cbAttendanceClick() {
@@ -239,6 +275,7 @@ jQuery(function($) {"use strict";
 
         $('nav').on('click', '#btnLogout', btnLogoutClick);
         $('#btnPassword').on('click', btnPassWordClick);
+        $('#btnEmail').on('click', btnEmailClick);
         $('#cbAttendance').find('.checkbox').on('click', cbAttendanceClick);
 
     });

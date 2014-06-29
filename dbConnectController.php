@@ -17,6 +17,12 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'setAttendance' :
 			setAttendance($_POST['val']);
 			break;
+		case 'getEmail' :
+			getEmail();
+			break;
+		case 'setEmail' :
+			setEmail($_POST['val']);
+			break;
 		case 'createUsernameAndSalt' :
 			//createUsernameAndSalt();
 			break;
@@ -88,7 +94,7 @@ class dbConnectController {
 
 	public function setAttendance($val) {
 		if (!isset($_SESSION['usr']) || empty($_SESSION['usr']))
-			return -1;
+			return NULL;
 
 		$query = "UPDATE " . conf::TBL_USR . " SET `will_participate` =  '" . $val . "' WHERE  " . conf::USR_NAME . " =  '" . $_SESSION['usr'] . "'";
 		$this -> connection -> query($query);
@@ -96,9 +102,26 @@ class dbConnectController {
 
 	public function getAttendance() {
 		if (!isset($_SESSION['usr']))
-			return -1;
+			return NULL;
 
-		$query = "SELECT `will_participate` FROM " . conf::TBL_USR . " WHERE  `username` =  '" . $_SESSION['usr'] . "'";
+		$query = "SELECT `" . conf::USR_PART . "` FROM " . conf::TBL_USR . " WHERE  " . conf::USR_NAME . " =  '" . $_SESSION['usr'] . "'";
+		$result = $this -> connection -> query($query);
+		return $result;
+	}
+
+	public function setEmail($val) {
+		if (!isset($_SESSION['usr']) || empty($_SESSION['usr']))
+			return NULL;
+
+		$query = "UPDATE " . conf::TBL_USR . " SET `" . conf::USR_MAIL . "` =  '" . $val . "' WHERE  " . conf::USR_NAME . " =  '" . $_SESSION['usr'] . "'";
+		$this -> connection -> query($query);
+	}
+
+	public function getEmail() {
+		if (!isset($_SESSION['usr']))
+			return NULL;
+
+		$query = "SELECT `" . conf::USR_MAIL . "` FROM " . conf::TBL_USR . " WHERE  " . conf::USR_NAME . " =  '" . $_SESSION['usr'] . "'";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -163,7 +186,8 @@ function validateUser($usr, $pw) {
 			echo conf::NAV;
 		}
 	} else {
-		echo "LOGIN FAILED";
+		header('HTTP/1.0 500 Login failed');
+		exit;
 	}
 
 	$db -> closeConnection();
@@ -203,14 +227,54 @@ function getAttendanceValue() {
 	return $value;
 }
 
-function generateSalt($max = 32) {
-	$characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
-	$i = 0;
-	$salt = "";
-	while ($i < $max) {
-		$salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
-		$i++;
+function setEmail($val) {
+	$cleanMail = filter_var($val, FILTER_SANITIZE_EMAIL);
+	$emailCheck =  filter_var($cleanMail, FILTER_VALIDATE_EMAIL);
+	
+	if ($emailCheck) {
+		$db = new dbConnectController();
+		$db -> setEmail($cleanMail);
+		$db -> closeConnection();
+	} else {
+		header('HTTP/1.0 500 Email invalid');
+		exit;
 	}
-	return $salt;
 }
+
+function getEmail() {
+	$db = new dbConnectController();
+	$result = $db -> getEmail();
+	if ($result) {
+		while ($row = $result -> fetch_assoc()) {
+			echo $row['email'];
+		}
+	}
+	$db -> closeConnection();
+}
+
+
+function getEmailValue() {
+	$db = new dbConnectController();
+	$result = $db -> getEmail();
+	$value = "";
+	
+	if ($result) {
+		while ($row = $result -> fetch_assoc()) {
+			$value = $row['email'];
+		}
+	}
+	$db -> closeConnection();
+	return $value;
+}
+
+// function generateSalt($max = 32) {
+// $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
+// $i = 0;
+// $salt = "";
+// while ($i < $max) {
+// $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
+// $i++;
+// }
+// return $salt;
+// }
 ?>
