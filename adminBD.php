@@ -24,16 +24,19 @@ ob_start();
                                 pw : adminPwVal
                             })
                         }).done(function(result) {
-                            $('#adminContent').html(result);
+                            $('#adminLogin').fadeOut(400, function() {
+                                $('#adminContent').html(result).fadeIn();
+                            });
                         });
                     }
                 }
+
 
                 $('#confirmAdmin').on('click', btnConfirmAdmin);
             });
 
 		</script>
-		<div class="padding10px" style="width: 250px; border: 1px solid #111; background: #fff;">
+		<div id="adminLogin" class="padding10px" style="width: 250px; border: 1px solid #111; background: #fff;">
 			<fieldset>
 				<legend>
 					Zugangsdaten
@@ -47,7 +50,7 @@ ob_start();
 				OK
 			</div>
 		</div>
-		<div id="adminContent" class="padding10px" style="width: 250px; border: 1px solid #111; background: #fff;">
+		<div id="adminContent" class="padding10px" style="display: none; width: 250px; border: 1px solid #111; background: #fff;">
 
 		</div>
 	</body>

@@ -91,7 +91,7 @@ class dbConnectController {
 
 	public function getUsers() {
 		$usr = strtolower($usr);
-		$query = "SELECT * FROM " . conf::TBL_USR ." ORDER BY  " . conf::USR_NAME . " ASC ";
+		$query = "SELECT * FROM " . conf::TBL_USR . " ORDER BY  " . conf::USR_NAME . " ASC ";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -225,26 +225,45 @@ function validateAdmin($usr, $pw) {
 		while ($row = $result -> fetch_assoc()) {
 			if ($row['is_adm'] == 1) {
 				$currentUsersResult = $db -> getUsers();
-				echo "<table class=\"admTable\">";
+				$resultTable = "<table class=\"admTable\">";
+				$notChoosen = 0;
+				$isNotAttending = 0;
+				$isAttending = 0;
+				$maybe = 0;
+				$sum = 0;
 				while ($row = $currentUsersResult -> fetch_assoc()) {
-					echo "<tr><td>" . $row['first_name'] . " " . $row['last_name'] . "</td><td>";
+					$sum++;
+					$resultTable .= "<tr><td>" . $row['first_name'] . " " . $row['last_name'] . "</td><td>";
 					switch($row['will_participate']) {
 						case -1 :
-							echo "<span class=\"notChoosen\">Nicht gew&auml;hlt</span>";
+							$notChoosen++;
+							$resultTable .= "<span class=\"notChoosen\">Nicht gew&auml;hlt</span>";
 							break;
 						case 0 :
-							echo "<span class=\"isNotAttending\">Nein</span>";
+							$isNotAttending++;
+							$resultTable .= "<span class=\"isNotAttending\">Nein</span>";
 							break;
 						case 1 :
-							echo "<span class=\"isAttending\">Ja</span>";
+							$isAttending++;
+							$resultTable .= "<span class=\"isAttending\">Ja</span>";
 							break;
 						case 2 :
-							echo "<span class=\"maybe\">Vielleicht</span>";
+							$maybe++;
+							$resultTable .= "<span class=\"maybe\">Vielleicht</span>";
 							break;
 					}
-					echo "</td>";
+					$resultTable .= "</td>";
 				}
+				$resultTable .= "</table>";
+				echo "<table class=\"admTable\">";
+				echo "<tr><td><span class=\"notChoosen\">Nicht gew&auml;hlt</span></td><td>" . $notChoosen . "</td></tr>";
+				echo "<tr><td><span class=\"isNotAttending\">Nein</span></td><td>" . $isNotAttending . "</td></tr>";
+				echo "<tr><td><span class=\"isAttending\">Ja</span></td><td>" . $isAttending . "</td></tr>";
+				echo "<tr><td><span class=\"maybe\">Vielleicht</span></td><td>" . $maybe . "</td></tr>";
+				echo "<tr><td><span class=\"notChoosen\">Gesamt</span></td><td>" . $sum . "</td></tr>";
 				echo "</table>";
+				echo "<br/ ><br /><br />";
+				echo $resultTable;
 			} else {
 				header('HTTP/1.0 500 Login failed');
 				exit ;
