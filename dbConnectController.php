@@ -32,6 +32,15 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'logoutUser' :
 			logoutUser();
 			break;
+		case 'addNewUser' :
+			$fn = $_POST['firstName'];
+			$ln = $_POST['lastName'];
+			$un = $_POST['userName'];
+			$pw = $_POST['pw'];
+			addNewUser($fn, $ln, $un, $pw);
+			break;
+		case 'changeUser' :
+			break;
 	}
 }
 ?>
@@ -77,7 +86,14 @@ class dbConnectController {
 
 	public function getUserByName($usr) {
 		$usr = strtolower($usr);
-		$query = "SELECT username, password FROM bd_users WHERE username = '$usr'";
+		$query = "SELECT username, password FROM " . conf::TBL_USR . " WHERE " . conf::USR_NAME . " = '$usr'";
+		$result = $this -> connection -> query($query);
+		return $result;
+	}
+
+	public function getUserByFullName($firstName, $lastName, $usr) {
+		$usr = strtolower($usr);
+		$query = "SELECT * FROM " . conf::TBL_USR . " WHERE (" . conf::USR_NAME . " = '$usr') OR (" . conf::USR_FNAME . " = '$firstName' AND " . conf::USR_LNAME . " = '$lastName')";		
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -204,6 +220,7 @@ function validateUser($usr, $pw) {
 }
 
 function validateAdmin($usr, $pw) {
+	$_SESSION['is_adm'] = 0;
 	if (empty($usr)) { echo "USR empty";
 		return;
 	}
@@ -224,16 +241,24 @@ function validateAdmin($usr, $pw) {
 		$_SESSION['usr'] = $usr;
 		while ($row = $result -> fetch_assoc()) {
 			if ($row['is_adm'] == 1) {
+				$_SESSION['is_adm'] = 1;
 				$currentUsersResult = $db -> getUsers();
+
+				// outer table
+				echo "<table><tr><td class=\"stats\">";
+
 				$resultTable = "<table class=\"admTable\">";
 				$notChoosen = 0;
 				$isNotAttending = 0;
 				$isAttending = 0;
 				$maybe = 0;
 				$sum = 0;
+				$options = "";
 				while ($row = $currentUsersResult -> fetch_assoc()) {
 					$sum++;
 					$resultTable .= "<tr><td>" . $row['first_name'] . " " . $row['last_name'] . "</td><td>";
+					$options .= "<option value=\"" . $row['username'] . "\">" . $row['first_name'] . " " . $row['last_name'] . "</option>";
+
 					switch($row['will_participate']) {
 						case -1 :
 							$notChoosen++;
@@ -255,6 +280,8 @@ function validateAdmin($usr, $pw) {
 					$resultTable .= "</td>";
 				}
 				$resultTable .= "</table>";
+
+				echo "<fieldset><legend>Statistiken</legend>";
 				echo "<table class=\"admTable\">";
 				echo "<tr><td><span class=\"notChoosen\">Nicht gew&auml;hlt</span></td><td>" . $notChoosen . "</td></tr>";
 				echo "<tr><td><span class=\"isNotAttending\">Nein</span></td><td>" . $isNotAttending . "</td></tr>";
@@ -262,8 +289,24 @@ function validateAdmin($usr, $pw) {
 				echo "<tr><td><span class=\"maybe\">Vielleicht</span></td><td>" . $maybe . "</td></tr>";
 				echo "<tr><td><span class=\"notChoosen\">Gesamt</span></td><td>" . $sum . "</td></tr>";
 				echo "</table>";
-				echo "<br/ ><br /><br />";
+				echo "</fieldset>";
+
+				//outer table
+				echo "</td><td class=\"overview\">";
+				echo "<fieldset><legend>Übersicht</legend>";
 				echo $resultTable;
+				echo "</fieldset>";
+
+				//outer table
+				//echo "</td><td class=\"newUser\">";
+				//echo conf::UI_TBL_NEW_USER;
+
+				//outer table
+				//echo "</td><td class=\"changeUser\">";
+				//echo str_replace("[OPTIONS]", $options, conf::UI_TBL_CHANGE_USER);
+
+				//outer table
+				echo "</td></tr></table>";
 			} else {
 				header('HTTP/1.0 500 Login failed');
 				exit ;
@@ -279,6 +322,19 @@ function validateAdmin($usr, $pw) {
 
 function logoutUser() {
 	session_destroy();
+}
+
+function addNewUser($fn, $ln, $un, $pw) {
+	$db = new dbConnectController();
+	$result = $db -> getUserByFullName($fn, $ln, $un);
+
+	if (($result -> num_rows) > 0) {
+		header('HTTP/1.0 500 User already exists');
+		echo "User already exists!";
+		exit ;
+	}
+
+	$db -> closeConnection();
 }
 
 function setAttendance($val) {

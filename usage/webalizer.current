@@ -1,7 +1,7 @@
-# Webalizer V2.23-08 Incremental Data - 06/28/2014 23:10:09
-2014 6 28 23 10 9
-1757 1630 1 19 3 3 26898101 277 5 0
-1 78 487 25 28
+# Webalizer V2.23-08 Incremental Data - 06/29/2014 23:48:19
+2014 6 29 23 48 19
+7238 4290 40 34 7 25 242663306 1013 50 0
+40 88 603 25 29
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -30,53 +30,55 @@
 573 546 9551574 1 75 1
 0 0 0 0 0 0
 863 776 12725528 1 121 3
+5481 2660 215765205 40 736 45
 0 0 0 0 0 0
 0 0 0 0 0 0
-0 0 0 0 0 0
+0 0 0 0
+260 155 2493178 25
+362 170 2423626 47
+503 104 820543 61
+603 76 133828 70
+131 56 515121 27
 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-89 68 1025232 11
-194 194 3523014 25
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-15 15 247272 2
-776 747 12561752 105
-683 606 9540831 134
+146 73 1034644 16
+444 294 4071271 93
+315 64 3773699 23
+229 48 1947603 23
+565 361 44129490 48
+286 209 27840260 20
+555 310 37325054 76
+512 333 34370931 90
+224 140 16617559 29
+60 37 1643407 8
+173 147 11756340 28
+177 153 10068605 35
+922 877 28860967 138
+771 683 12837180 156
 0
 0
 0
-1630
+4290
 0
 0
 0
 0
 0
+9
+0
+2
+0
+0
+2885
 0
 0
 0
 0
 0
-127
-0
-0
-0
-0
-0
+2
+8
 0
 0
 0
@@ -90,9 +92,7 @@
 0
 0
 0
-0
-0
-0
+42
 0
 0
 0
@@ -100,73 +100,391 @@
 0
 # -urls- 
 /assets/font/DroidSans.woff
-0 117 0 2994624 0 0
+0 392 0 5628784 0 0
 /assets/font/DroidSansBold.woff
-0 117 0 3124224 0 0
+0 426 0 6624512 0 0
 /assets/font/BebasNeue.woff
-0 117 0 2218320 0 0
+0 425 0 4683120 0 0
 /assets/img/newBg.png
-1 1 32938384 309329 0 0
+1 1 0 309329 0 0
 /assets/font/DroidSans.eot
-0 1 32938128 0 0 0
+0 7 0 49138 0 0
 /dbConnectController.php
-0 153 0 17685 0 4
+0 486 0 63400 1 10
 /assets/font/DroidSansBold.eot
-0 1 32938256 0 0 0
+0 7 0 51240 0 0
 /assets/js/jq.js
-1 118 0 9226440 0 0
+1 447 0 20246910 0 0
+/assets/img/content_bg_accommodation.png
+1 113 36700368 20834808 0 0
 /assets/img/contentBgs/provision_bg.png
-1 118 0 1106136 0 0
+1 405 0 2099610 0 0
+/assets/font/DKCoolCrayon.ttf
+0 6 36699344 2215896 0 0
+/assets/font/DKCoolCrayon.woff
+0 128 36699600 25712680 0 0
 /assets/js/jquery-ui-1.10.4.custom.js
-1 118 0 2335392 0 0
+1 449 0 5122534 0 0
+/assets/font/BebasNeue.ttf
+0 2 36691232 98464 0 0
+/assets/img/content_bg_provision.png
+1 112 36700240 27608832 0 0
 /assets/img/contentBgs/transportation_bg.png
-1 118 0 1225800 0 0
+1 403 0 2304050 0 0
 /assets/font/BebasNeue.eot
-0 1 32931232 0 0 0
+0 7 0 36124 0 0
+/adminBD.php
+0 42 36908096 36713 3 0
 /assets/img/contentBgs/attendance_bg.png
-1 118 0 2287764 0 0
+1 403 0 4300149 0 0
+/assets/img/content_bg_login.png
+1 111 36699984 29342544 0 0
 /assets/img/contentBgs/accommodation_bg.png
-1 118 0 1142424 0 0
+1 404 0 2157912 0 0
 /assets/js/jq_impl.js
-1 121 0 167069 0 0
+1 461 0 486744 0 0
+/assets/img/header_bg.png
+1 7 36699728 176577 0 0
+/assets/img/content_bg.png
+1 25 36699856 2312052 0 0
+/assets/img/content_bg_attendance.png
+1 111 36700112 26487768 0 0
 /
-0 124 0 176281 5 0
+0 438 0 866255 44 6
 /assets/img/ajax_loader_bars.gif
-1 60 0 107028 0 0
+1 353 0 311174 0 0
+/assets/font/DKCoolCrayon.eot
+0 6 36699472 831573 0 0
+/assets/font/DroidSans.ttf
+0 1 36699216 53480 0 0
+/assets/img/content_bg_gapfiller.png
+1 135 36700640 21850034 0 0
+/assets/font/DroidSansBold.ttf
+0 1 36691360 55660 0 0
 /assets/img/black_lozenge.png
-1 117 0 29746 0 0
+1 300 0 38920 0 0
+/assets/img/content_bg_location.png
+1 112 36700512 28460740 0 0
 /assets/css/style.css
-1 119 0 429839 0 0
+1 458 0 1202177 0 0
 # End Of Table - urls
 # -sites- (monthly)
 p4feeadb0.dip0.t-ipconnect.de
-0 1757 1630 26898101 5 1403997002
+0 6090 3498 153665121 11 1404085699
+/dbConnectController.php
+pd9e2d1d2.dip0.t-ipconnect.de
+0 79 33 2791824 1 1404063710
 /
+dslb-178-003-170-198.pools.arcor-ip.net
+0 46 43 5565972 2 1404065473
+/
+69.171.248.0
+0 1 1 1982 0 0
+-
+173.252.113.117
+0 1 1 1982 0 0
+-
+baeckerei-riedel.de
+0 91 49 5571928 3 1404072875
+/
+p57aa31c1.dip0.t-ipconnect.de
+0 27 27 3521158 1 1404077017
+/dbConnectController.php
+69.171.248.1
+0 2 0 383 1 1404061613
+-
+p5b0e18a1.dip0.t-ipconnect.de
+0 45 26 2686897 1 1404066989
+/dbConnectController.php
+dslb-178-008-120-199.pools.arcor-ip.net
+0 29 25 2788484 1 1404080780
+/dbConnectController.php
+p5799595d.dip0.t-ipconnect.de
+0 20 20 2782811 1 1404061277
+/
+p5dc11f58.dip0.t-ipconnect.de
+0 24 24 2783110 1 1404063906
+/dbConnectController.php
+173.252.110.115
+0 3 3 7256 2 1404063628
+/
+89.204.154.222
+0 20 20 2782811 1 1404066474
+/
+tmo-097-33.customers.d1-online.com
+0 26 26 2898254 1 1404075471
+/dbConnectController.php
+f055146239.adsl.alicedsl.de
+0 67 28 2791456 1 1404060258
+/
+dslb-188-107-172-133.pools.arcor-ip.net
+0 20 20 2782886 1 1404073761
+/
+p4feea7ac.dip0.t-ipconnect.de
+0 41 26 2785974 1 1404061481
+/dbConnectController.php
+p54ad59a4.dip0.t-ipconnect.de
+0 28 28 2783249 1 1404062715
+/dbConnectController.php
+82.113.106.173
+0 24 24 3256023 1 1404061869
+/
+178-25-114-193-dynip.superkabel.de
+0 28 20 2783094 1 1404081453
+/dbConnectController.php
+dslb-088-074-255-146.pools.arcor-ip.net
+0 2 1 2637 1 1404067132
+/
+173.252.114.114
+0 2 2 3964 0 0
+-
+p57b1524d.dip0.t-ipconnect.de
+0 24 24 2783141 1 1404062659
+/dbConnectController.php
+089-101-083130.ntlworld.ie
+0 24 24 2783185 1 1404083409
+/dbConnectController.php
+82.113.98.93
+0 37 25 3500052 1 1404060874
+/dbConnectController.php
+173.252.110.116
+0 1 1 1982 0 0
+-
+ip-109-45-2-51.web.vodafone.de
+0 90 45 3249027 1 1404062548
+/dbConnectController.php
+89.204.138.51
+0 11 11 230312 1 1404076453
+/
+p5793295c.dip0.t-ipconnect.de
+0 24 24 2783110 2 1404081757
+/dbConnectController.php
+pd9ea6942.dip0.t-ipconnect.de
+0 20 20 2782886 1 1404073940
+/
+p579cf578.dip0.t-ipconnect.de
+0 66 28 2788844 1 1404061527
+/dbConnectController.php
+173.252.103.5
+0 2 0 377 1 1404060742
+-
+p5b201145.dip0.t-ipconnect.de
+0 68 31 2793331 1 1404058356
+/
+cmnz-4db377d9.pool.mediaways.net
+0 22 22 2783056 1 1404061208
+/dbConnectController.php
+31-19-211-214-dynip.superkabel.de
+0 40 25 2785949 1 1404060708
+/
+173.252.110.117
+0 1 1 1982 0 0
+-
+173.252.110.114
+0 1 1 1982 0 0
+-
+p5497da78.dip0.t-ipconnect.de
+0 22 22 2783056 1 1404061334
+/dbConnectController.php
+ppp-93-104-136-81.dynamic.mnet-online.de
+0 69 50 5571778 2 1404078329
+/dbConnectController.php
 # End Of Table - sites (monthly)
 # -sites- (daily)
 p4feeadb0.dip0.t-ipconnect.de
-0 863 776 12725528 3 1403997002
+0 4333 1868 126767020 6 1404085699
+/dbConnectController.php
+pd9e2d1d2.dip0.t-ipconnect.de
+0 79 33 2791824 1 1404063710
 /
+dslb-178-003-170-198.pools.arcor-ip.net
+0 46 43 5565972 2 1404065473
+/
+69.171.248.0
+0 1 1 1982 0 0
+-
+173.252.113.117
+0 1 1 1982 0 0
+-
+baeckerei-riedel.de
+0 91 49 5571928 3 1404072875
+/
+p57aa31c1.dip0.t-ipconnect.de
+0 27 27 3521158 1 1404077017
+/dbConnectController.php
+69.171.248.1
+0 2 0 383 1 1404061613
+-
+p5b0e18a1.dip0.t-ipconnect.de
+0 45 26 2686897 1 1404066989
+/dbConnectController.php
+dslb-178-008-120-199.pools.arcor-ip.net
+0 29 25 2788484 1 1404080780
+/dbConnectController.php
+p5799595d.dip0.t-ipconnect.de
+0 20 20 2782811 1 1404061277
+/
+p5dc11f58.dip0.t-ipconnect.de
+0 24 24 2783110 1 1404063906
+/dbConnectController.php
+173.252.110.115
+0 3 3 7256 2 1404063628
+/
+89.204.154.222
+0 20 20 2782811 1 1404066474
+/
+tmo-097-33.customers.d1-online.com
+0 26 26 2898254 1 1404075471
+/dbConnectController.php
+f055146239.adsl.alicedsl.de
+0 67 28 2791456 1 1404060258
+/
+dslb-188-107-172-133.pools.arcor-ip.net
+0 20 20 2782886 1 1404073761
+/
+p4feea7ac.dip0.t-ipconnect.de
+0 41 26 2785974 1 1404061481
+/dbConnectController.php
+p54ad59a4.dip0.t-ipconnect.de
+0 28 28 2783249 1 1404062715
+/dbConnectController.php
+82.113.106.173
+0 24 24 3256023 1 1404061869
+/
+178-25-114-193-dynip.superkabel.de
+0 28 20 2783094 1 1404081453
+/dbConnectController.php
+dslb-088-074-255-146.pools.arcor-ip.net
+0 2 1 2637 1 1404067132
+/
+173.252.114.114
+0 2 2 3964 0 0
+-
+p57b1524d.dip0.t-ipconnect.de
+0 24 24 2783141 1 1404062659
+/dbConnectController.php
+089-101-083130.ntlworld.ie
+0 24 24 2783185 1 1404083409
+/dbConnectController.php
+82.113.98.93
+0 37 25 3500052 1 1404060874
+/dbConnectController.php
+173.252.110.116
+0 1 1 1982 0 0
+-
+ip-109-45-2-51.web.vodafone.de
+0 90 45 3249027 1 1404062548
+/dbConnectController.php
+89.204.138.51
+0 11 11 230312 1 1404076453
+/
+p5793295c.dip0.t-ipconnect.de
+0 24 24 2783110 2 1404081757
+/dbConnectController.php
+pd9ea6942.dip0.t-ipconnect.de
+0 20 20 2782886 1 1404073940
+/
+p579cf578.dip0.t-ipconnect.de
+0 66 28 2788844 1 1404061527
+/dbConnectController.php
+173.252.103.5
+0 2 0 377 1 1404060742
+-
+p5b201145.dip0.t-ipconnect.de
+0 68 31 2793331 1 1404058356
+/
+cmnz-4db377d9.pool.mediaways.net
+0 22 22 2783056 1 1404061208
+/dbConnectController.php
+31-19-211-214-dynip.superkabel.de
+0 40 25 2785949 1 1404060708
+/
+173.252.110.117
+0 1 1 1982 0 0
+-
+173.252.110.114
+0 1 1 1982 0 0
+-
+p5497da78.dip0.t-ipconnect.de
+0 22 22 2783056 1 1404061334
+/dbConnectController.php
+ppp-93-104-136-81.dynamic.mnet-online.de
+0 69 50 5571778 2 1404078329
+/dbConnectController.php
 # End Of Table - sites (daily)
 # -referrers- 
 http://bd2014.netznova.de/assets/css/style.css
-1 8
+1 322
 http://bd2014.netznova.de/
-1 1625
+1 6168
+http://www.facebook.com/l/-AQGySzw2AQGBouDD2-InX91rB1EvgzE_w0_hpOiR7hRfPA/bd2014.netznova.de/
+1 2
+https://www.facebook.com/
+0 1
 - (Direct Request)
-0 124
+0 449
+http://bd2014.netznova.de/adminBD.php
+1 293
+https://m.facebook.com
+0 3
 # End Of Table - referrers
 # -agents- 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
-1 1727
+1 6045
+visionutils/0.2
+0 1
+Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.17
+1 27
+Mozilla/5.0 (Android; Mobile; rv:16.0) Gecko/16.0 Firefox/16.0
+1 24
+Mozilla/5.0 (iPad; CPU OS 7_1_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D201 [FBAN/FBIOS;FBAV/11.0.0
+0 29
+Mozilla/5.0 (Windows NT 6.3; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+1 156
 Browser: Firefox
-2 15
+2 568
+Mozilla/5.0 (Linux; U; Android 4.3; de-de; SAMSUNG GT-I9300/I9300XXUGNA5 Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko)
+0 21
+Mozilla/5.0 (Linux; U; Android 4.1.2; de-de; GT-I8190 Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile
+0 22
 Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
-0 15
+0 144
+facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
+0 13
+Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0) Gecko/20100101 Firefox/16.0
+1 70
+Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36 OPR/22.0.1471.7
+1 24
+Mozilla/5.0 (Linux; U; Android 4.3; de-de; GT-I9300 Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile S
+0 87
+Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+1 20
+Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+1 68
+Mozilla/5.0 (Linux; Android 4.4.2; HTC One Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.141 Mobile S
+0 22
+Mozilla/5.0 (Android; Mobile; rv:29.0) Gecko/29.0 Firefox/29.0
+1 37
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:30.0) Gecko/20100101 Firefox/30.0
+1 79
 Browser: Safari
-2 1727
+2 6157
+Mozilla/5.0 (Linux; Android 4.4.2; HTC One mini Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.141 Mob
+0 26
+Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D167 Safa
+0 20
+Browser: Opera
+2 27
+Mozilla/5.0 (Windows NT 6.2; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+1 28
+Mozilla/5.0 (Windows NT 5.1; rv:27.0) Gecko/20100101 Firefox/27.0
+1 24
+Mozilla/5.0 (Linux; U; Android 4.3; de-de; SAMSUNG GT-I9305/I9305XXUEMKC Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko)
+0 90
+Mozilla/5.0 (Linux; Android 4.2.2; de-de; SAMSUNG GT-I9195 Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Version/1.0 Ch
+0 11
 Mozilla/5.0 (Windows NT 6.1; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
-1 15
+1 150
 # End Of Table - agents
 # -search strings- 
 # End Of Table - search strings

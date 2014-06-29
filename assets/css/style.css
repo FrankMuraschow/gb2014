@@ -60,7 +60,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed                                        :
+	position: fixed                                           :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -867,8 +867,15 @@ a, a:visited, a:hover, a:visited:hover {
 	width: 1000px;
 }
 
-fieldset {
+.admin fieldset {
 	color: #111;
+}
+
+.admin fieldset legend {
+	font-weight: bold;
+	font-size: 16pt;
+	text-align: left;
+	margin-bottom: 20px;
 }
 
 .label {
@@ -890,6 +897,42 @@ span.maybe {
 table.admTable {
 	text-align: left;
 	color: #111;
+}
+
+.adminContent {
+	display: none;
+	width: 1000px;
+	border: 1px solid #111;
+	background: #fff;
+}
+
+.admin td {
+	vertical-align: top;
+}
+
+.admin td.stats {
+	width: 200px;
+}
+
+.admin td.overview {
+	width: 250px;
+}
+
+.admin td.newUser, .admin td.changeUser {
+	width: 275px;
+}
+
+.admin .messages {
+	position: fixed;
+	right: 50px;
+	top; 0px;
+	width: 150px;
+	height: 150px;
+	background: #111;
+	color: #ddd;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 14pt;
 }
 
 @media all and (max-width: 1015px) {
