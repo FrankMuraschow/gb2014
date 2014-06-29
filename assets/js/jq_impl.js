@@ -46,8 +46,10 @@ jQuery(function($) {"use strict";
             innerWrap.removeClass('transisitionAllMed');
         } else {
             that = $(event.target);
+            $('.navButton.active').addClass('pointer');
             $('.navButton').removeClass('active hover');
             that.addClass('active');
+            that.removeClass('pointer');
         }
 
         switch (that.attr('id')) {
@@ -55,13 +57,13 @@ jQuery(function($) {"use strict";
                 marVal = windowWidth1015 ? -1190 : -1390;
                 break;
             case "btnProvision":
-                marVal = windowWidth1015 ? -2380 : -2781;
+                marVal = windowWidth1015 ? -2380 : -2780;
                 break;
             case "btnLocation":
-                marVal = windowWidth1015 ? -3570 : -4171;
+                marVal = windowWidth1015 ? -3570 : -4170;
                 break;
             case "btnAccommodation":
-                marVal = windowWidth1015 ? -4760 : -5562;
+                marVal = windowWidth1015 ? -4760 : -5560;
                 break;
             case "btnLogout":
                 marVal = windowWidth1015 ? -0 : 0;
@@ -83,16 +85,21 @@ jQuery(function($) {"use strict";
     }
 
     function showNav() {
+        var navDfd = $.Deferred();
         $('#btnLogin').text('Logout').attr('id', 'btnLogout');
         //$('#ctnLogin .table-row').fadeOut();
         $('#btnAttendance').fadeIn(400, function() {
             $('#btnAttendance').trigger('click');
             $('#btnProvision').fadeIn(400, function() {
                 $('#btnLocation').fadeIn(400, function() {
-                    $('#btnAccommodation').fadeIn(400);
+                    $('#btnAccommodation').fadeIn(400, function() {
+                        navDfd.resolve();
+                    });
                 });
             });
         });
+
+        return navDfd.promise();
     }
 
 
@@ -167,7 +174,7 @@ jQuery(function($) {"use strict";
 
             if (check) {
                 $('#btnPassword').off().addClass('loading');
-                $('#pwLoader').removeClass('hidden'); 
+                $('#pwLoader').removeClass('hidden');
                 dfdPw = $.ajax({
                     url : "././dbConnectController.php",
                     type : "POST",
@@ -180,21 +187,24 @@ jQuery(function($) {"use strict";
                 }).done(function(result) {
                     processAttendance().done(function(attendanceResult) {
                         attendanceResult = $.trim(attendanceResult);
+                        $('.checkbox').removeClass('checked');
                         $('.checkbox[data-value=' + attendanceResult + ']').addClass('checked');
                     }).always(function() {
                         result = $.trim(result);
                         $('nav').prepend(result);
-                        showNav();
+                        showNav().always(function() {
+                            $('#pwLoader').addClass('hidden');
+                            $('#btnPassword').on('click', btnPassWordClick).removeClass('loading');
+                        });
                     });
                 }).fail(function(result) {
                     $('.bigButtonContainer').effect('shake', {
                         distance : 10,
                         times : 2
                     });
-                }).always(function(result) {
                     $('#pwLoader').addClass('hidden');
                     $('#btnPassword').on('click', btnPassWordClick).removeClass('loading');
-                });
+                })
             }
         }
 
@@ -230,6 +240,10 @@ jQuery(function($) {"use strict";
                 }).done(function() {
                     location.reload();
                 }).fail(function() {
+                    $('.bigButtonContainer').effect('shake', {
+                        distance : 10,
+                        times : 2
+                    });
                     tbEmail.addClass('error');
                 }).always(function() {
                     $('#btnEmail').on('click', btnEmailClick).removeClass('loading');
@@ -240,8 +254,10 @@ jQuery(function($) {"use strict";
 
         function cbAttendanceClick() {
             var that = $(this), checkedVal = that.data('value'), cbLoader = that.children('.cbLoading');
+
             if (!that.hasClass('checked')) {
                 cbLoader.removeClass('hidden');
+                that.removeClass('pointer').off();
 
                 $.ajax({
                     url : "././dbConnectController.php",
@@ -252,8 +268,10 @@ jQuery(function($) {"use strict";
                     })
                 }).done(function() {
                     cbLoader.addClass('hidden');
-                    $('.checkbox.checked').removeClass('checked');
+                    $('.checkbox.checked').removeClass('checked').addClass('pointer');
                     that.addClass('checked');
+                }).always(function() {
+                    $('#cbAttendance').find('.checkbox').not('.checked').on('click', cbAttendanceClick);
                 });
             }
 

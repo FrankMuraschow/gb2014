@@ -24,7 +24,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 			setEmail($_POST['val']);
 			break;
 		case 'createUsernameAndSalt' :
-			//createUsernameAndSalt();
+			// createUsernameAndSalt();
 			break;
 		case 'logoutUser' :
 			logoutUser();
@@ -86,11 +86,11 @@ class dbConnectController {
 		return $result;
 	}
 
-	// public function createUsernameAndSalt($usr, $fn, $ln, $pw, $salt) {
-	// $query = "INSERT INTO `" . conf::TBL_USR . "` (`" . conf::USR_FNAME . "`, `" . conf::USR_LNAME . "`, `" . conf::USR_NAME . "`, `" . conf::USR_PW . "`, `" . conf::USR_SALT . "`) VALUES ('$fn', '$ln', '$usr', '$pw', '$salt')";
-	// $result = $this -> connection -> query($query);
-	// return $result;
-	// }
+	public function createUsernameAndSalt($usr, $fn, $ln, $pw, $salt) {
+	 $query = "INSERT INTO `" . conf::TBL_USR . "` (`" . conf::USR_FNAME . "`, `" . conf::USR_LNAME . "`, `" . conf::USR_NAME . "`, `" . conf::USR_PW . "`, `" . conf::USR_SALT . "`) VALUES ('$fn', '$ln', '$usr', '$pw', '$salt')";
+	 $result = $this -> connection -> query($query);
+	 return $result;
+	}
 
 	public function setAttendance($val) {
 		if (!isset($_SESSION['usr']) || empty($_SESSION['usr']))
@@ -128,8 +128,8 @@ class dbConnectController {
 
 }
 
-function createUsernameAndSalt() {
-
+// function createUsernameAndSalt() {
+// 
 	// $db = new dbConnectController();
 	// $conf = new conf();
 	// $users = $conf::$UNS;
@@ -139,29 +139,29 @@ function createUsernameAndSalt() {
 	// $pws = $conf::$PWS;
 	// $return = ">>";
 	// $arrlength = count($users);
-	//
+// 
 	// for ($x = 0; $x < $arrlength; $x++) {
-	// $salt = generateSalt();
-	// $pw = md5($salt . $pws[$x]);
-	// $usr = $users[$x];
-	// $fn = $firstNames[$x];
-	// $ln = $lastNames[$x];
-	//
-	// if (!mb_detect_encoding($fn, 'UTF-8', true)) {
-	// $fn = utf8_encode($fn);
-	// }
-	//
-	// if (!mb_detect_encoding($ln, 'UTF-8', true)) {
-	// $ln = utf8_encode($ln);
-	// }
-	//
-	// $return .= $usr . "_" . $fn . "_" . $ln . "_" . $pw . "_" . $salt . "\n";
-	//
-	// $result = $db -> createUsernameAndSalt($usr, $fn, $ln, $pw, $salt);
+		// $salt = generateSalt();
+		// $pw = md5($salt . $pws[$x]);
+		// $usr = $users[$x];
+		// $fn = $firstNames[$x];
+		// $ln = $lastNames[$x];
+// 
+		// if (!mb_detect_encoding($fn, 'UTF-8', true)) {
+			// $fn = utf8_encode($fn);
+		// }
+// 
+		// if (!mb_detect_encoding($ln, 'UTF-8', true)) {
+			// $ln = utf8_encode($ln);
+		// }
+// 
+		// $return .= $usr . "_" . $fn . "_" . $ln . "_" . $pw . "_" . $salt . "\n";
+// 
+		// $result = $db -> createUsernameAndSalt($usr, $fn, $ln, $pw, $salt);
 	// }
 	// $db -> closeConnection();
 	// echo $return;
-}
+// }
 
 function validateUser($usr, $pw) {
 	if (empty($usr)) { echo "USR empty";
@@ -187,7 +187,7 @@ function validateUser($usr, $pw) {
 		}
 	} else {
 		header('HTTP/1.0 500 Login failed');
-		exit;
+		exit ;
 	}
 
 	$db -> closeConnection();
@@ -229,15 +229,15 @@ function getAttendanceValue() {
 
 function setEmail($val) {
 	$cleanMail = filter_var($val, FILTER_SANITIZE_EMAIL);
-	$emailCheck =  filter_var($cleanMail, FILTER_VALIDATE_EMAIL);
-	
+	$emailCheck = filter_var($cleanMail, FILTER_VALIDATE_EMAIL);
+
 	if ($emailCheck) {
 		$db = new dbConnectController();
 		$db -> setEmail($cleanMail);
 		$db -> closeConnection();
 	} else {
 		header('HTTP/1.0 500 Email invalid');
-		exit;
+		exit ;
 	}
 }
 
@@ -252,12 +252,11 @@ function getEmail() {
 	$db -> closeConnection();
 }
 
-
 function getEmailValue() {
 	$db = new dbConnectController();
 	$result = $db -> getEmail();
 	$value = "";
-	
+
 	if ($result) {
 		while ($row = $result -> fetch_assoc()) {
 			$value = $row['email'];
@@ -268,13 +267,13 @@ function getEmailValue() {
 }
 
 // function generateSalt($max = 32) {
-// $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
-// $i = 0;
-// $salt = "";
-// while ($i < $max) {
-// $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
-// $i++;
-// }
-// return $salt;
+	// $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
+	// $i = 0;
+	// $salt = "";
+	// while ($i < $max) {
+		// $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
+		// $i++;
+	// }
+	// return $salt;
 // }
 ?>

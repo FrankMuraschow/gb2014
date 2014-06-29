@@ -30,6 +30,14 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'DKCoolCrayon';
+	src: url('../font/DKCoolCrayon.eot');
+	src: url('../font/DKCoolCrayon.eot?#iefix') format('embedded-opentype'), url('../font/DKCoolCrayon.woff') format('woff'), url('../font/DKCoolCrayon.ttf') format('truetype'), url('../font/DKCoolCrayon.svg#DKCoolCrayon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -46,13 +54,13 @@ body {
 	margin: 0; /* required to "hide" distance div */
 	background: repeat 0 0 rgba(0,0,0,1);
 	/*background-size: cover;*/
-	background-image: url("../img/black_lozenge.png");
+	background-image: url("../img/content_bg_gapfiller.png");
 	color: #fff;
 }
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed                      :
+	position: fixed                                      :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -99,6 +107,10 @@ div#distance {
 	user-select: none;
 }
 
+.pointer {
+	cursor: pointer !important;
+}
+
 .content {
 	width: 1000px;
 	height: 100%;
@@ -110,8 +122,9 @@ div#distance {
 }
 
 .content_bg_wrapper {
+	background: #aaa;
 	height: 50px;
-	bottom: 10px;
+	bottom: 0px;
 	margin-left: auto;
 	position: absolute;
 	width: 100%;
@@ -148,6 +161,9 @@ input {
 #ctnAccommodation .content_bg {
 	background: url('../img/contentBgs/accommodation_bg.png');
 }
+
+.gapfiller_bg {
+	background: url('../img/content_bg_gapfiller.png');
 }
 
 #ctnLogin {
@@ -179,9 +195,10 @@ input {
 }
 
 .introText .header {
+
+	/*background: url('../img/header_bg.png') repeat 0 0;*/
 	font-family: "BebasNeue";
 	font-size: 24pt;
-	margin-bottom: 20px;
 }
 
 .introText ul {
@@ -195,17 +212,17 @@ input {
 }
 
 .checkbox {
-	cursor: pointer;
 	color: #ccc;
 	margin: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid #666;
 	background: #444;
+	cursor: default;
 }
 
 .checkbox:hover {
-	border-color: #fff;
+	border-color: #222;
 	color: #fff;
-	background: #222;
+	background: #000;
 }
 
 .checkbox.small {
@@ -220,9 +237,9 @@ input {
 
 .checkbox.checked {
 	background: #FD9206;
-	border: 1px solid white;
 	color: white;
 	font-weight: bold;
+	cursor: default;
 }
 
 .checkbox .cbLoading {
@@ -236,20 +253,50 @@ input {
 	top: 10px;
 }
 
-#ctnLogin .introText, #ctnLogin .textBg {
-	background-color: #1e0100;
+#ctnLogin .introText .header, #ctnLogin .textBg {
+	padding: 10px;
+	background-color: #FFF;
+	color: #1e0100;
 }
-#ctnAttendance .introText, #ctnAttendance .textBg {
-	background-color: #170d00;
+#ctnAttendance .introText .header, #ctnAttendance .textBg {
+	padding: 10px;
+	background-color: #FFF;
+	color: #170d00;
 }
-#ctnProvision .introText, #ctnProvision .textBg {
-	background-color: #0e0e01;
+#ctnProvision .introText .header, #ctnProvision .textBg {
+	padding: 10px;
+	background-color: #FFF;
+	color: #0e0e01;
 }
-#ctnLocation .introText, #ctnLocation .textBg {
-	background-color: #11040b;
+#ctnLocation .introText .header, #ctnLocation .textBg {
+	padding: 10px;
+	background-color: #FFF;
+	color: #11040b;
 }
-#ctnAccommodation .introText, #ctnAccommodation .textBg {
-	background-color: #011214;
+#ctnAccommodation .introText .header, #ctnAccommodation .textBg {
+	padding: 10px;
+	background-color: #FFF;
+	color: #011214;
+}
+
+.contentBgLogin {
+	background: url('../img/content_bg_login.png') repeat 0 0;
+}
+
+.contentBgAttendance {
+	background: url('../img/content_bg_attendance.png') repeat 0 0;
+}
+
+.contentBgProvision {
+	background: url('../img/content_bg_provision.png') repeat 0 0;
+}
+
+.contentBgLocation {
+	background: url('../img/content_bg_location.png') repeat 0 0;
+}
+
+.contentBgAccommodation {
+	background: url('../img/content_bg_accommodation.png') repeat 0 0;
 }
 
 .gradient {
@@ -303,9 +350,10 @@ input {
 }
 
 .accentLine {
+	z-index: 10000;
 	height: 5px;
 	position: absolute;
-	bottom: 5px;
+	bottom: 0px;
 	left: 0;
 	width: 100%;
 }
@@ -335,6 +383,7 @@ input {
 }
 
 .bdTextfield {
+	border: 1px solid #444;
 	color: #444;
 }
 
@@ -350,10 +399,10 @@ input {
 }
 
 .bdButton {
-	cursor: pointer;
 	color: #ddd;
 	background: #111;
 	text-align: center;
+	cursor: default;
 }
 
 .bdButton.loading {
@@ -391,7 +440,7 @@ input {
 }
 
 nav {
-	color: #fff;
+	color: #111;
 	font-weight: bold;
 	font-size: 1.25em;
 	/*background: rgba(255,255,255,0.85);*/
@@ -409,8 +458,8 @@ nav {
 	margin: 0 5px;
 	border: 0;
 	border: 0;
-	border-bottom: 10px solid #ddd;
-	cursor: pointer;
+	border-bottom: 10px solid #ccc;
+	background: #aaa;
 }
 
 .normalText {
@@ -432,31 +481,36 @@ nav {
 
 .normalText.background {
 }
+
 .underline {
 	text-decoration: underline;
+}
+
+.vBottomDirty {
+	position: absolute;
+	bottom: 75px;
+	display: block;
+	width: 100%;
+}
+
 }
 
 #btnAttendance {
 }
 
 #btnProvision {
-
 }
 
 #btnLocation {
-
 }
 
 #btnAccommodation {
-
 }
 
 #btnLogout {
-
 }
 
 #btnLogin {
-	cursor: default;
 }
 
 #btnLogin.active, #btnLogout.active, #btnLogout:hover {
@@ -487,10 +541,11 @@ nav {
 .active {
 	background: #fff;
 	color: #000;
+	cursor: default;
 }
 
 nav .active {
-	background: transparent;
+	background: #111;
 	color: #fff;
 }
 
@@ -569,7 +624,7 @@ input#user_participates {
 }
 
 #tbEmail {
-	font-size: 13pt;
+	font-size: 12pt;
 }
 
 span#noEmail {
@@ -640,7 +695,7 @@ span#emailSent {
 
 a, a:visited, a:hover, a:visited:hover {
 	text-decoration: none;
-	color: #fff;
+	color: #000;
 	font-size: 0.9em;
 	font-weight: bold;
 }
@@ -759,6 +814,59 @@ a, a:visited, a:hover, a:visited:hover {
 	text-align: -webkit-center;
 }
 
+#fixedThree {
+	top: 75px;
+	left: -50px;
+	z-index: -10000;
+}
+
+#fixedZero {
+	top: 75px;
+	right: -50px;
+	z-index: -10000;
+}
+
+#fixedYear {
+	bottom: 0;
+	z-index: -10000;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.crayon {
+	font-family: 'DKCoolCrayon';
+}
+
+.crayon.normal {
+	font-size: 20pt;
+}
+
+.crayon.big {
+	font-size: 300pt;
+}
+
+.verticalText {
+	width: 1em;
+}
+
+.width100pc {
+	width: 100%;
+}
+
+.googleMapsFix {
+	border: 1px solid #444;
+	width: 900px;
+	height: 400px;
+	margin: auto;
+}
+
+.googleMapsCell {
+	padding-top: 200px;
+	width: 1000px;
+}
+
 @media all and (max-width: 1015px) {
 
 	nav {
@@ -775,5 +883,13 @@ a, a:visited, a:hover, a:visited:hover {
 
 	div#innerWrapper {
 		width: 5560px;
+	}
+
+	.googleMapsCell {
+		width: 800px;
+	}
+
+	.googleMapsFix {
+		width: 700px;
 	}
 }
