@@ -38,9 +38,7 @@ jQuery(function($) {"use strict";
             }),
             dataType : "text"
         }).done(function(result) {
-            console.log('result: ' + result);
             $('.checkbox').removeClass('selected');
-            // $('.checkbox:data(value==' + result + ')').addClass('selected');
         }).fail().always();
     }
 
@@ -183,7 +181,6 @@ jQuery(function($) {"use strict";
                         times : 2
                     });
                     console.log(result);
-                }).always(function() {
                 });
             }
         }
@@ -205,6 +202,27 @@ jQuery(function($) {"use strict";
             });
         }
 
+        function cbAttendanceClick() {
+            var that = $(this), checkedVal = that.data('value'), cbLoader = that.children('.cbLoading');
+            if (!that.hasClass('checked')) {
+                cbLoader.removeClass('hidden');
+
+                $.ajax({
+                    url : "././dbConnectController.php",
+                    type : "POST",
+                    data : ( {
+                        action : "setAttendance",
+                        val : checkedVal
+                    })
+                }).done(function() {
+                    cbLoader.addClass('hidden');
+                    $('.checkbox.checked').removeClass('checked');
+                    that.addClass('checked');
+                });
+            }
+
+        }
+
         // EVENT BINDING
 
         $(window).on('resize', positionWrapper);
@@ -221,5 +239,7 @@ jQuery(function($) {"use strict";
 
         $('nav').on('click', '#btnLogout', btnLogoutClick);
         $('#btnPassword').on('click', btnPassWordClick);
+        $('#cbAttendance').find('.checkbox').on('click', cbAttendanceClick);
+
     });
 });

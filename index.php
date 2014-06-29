@@ -1,12 +1,14 @@
 <?php
 require_once ('FirePHP.class.php');
 require_once ('conf.php');
+require_once ('dbConnectController.php');
 session_start();
 ob_start();
 ?>
 <!DOCTYPE html>
 <html>
 	<?php
+	$attendance = getAttendanceValue();
 	include_once 'inc/inc_header.php';
 	?>
 	<body>
@@ -22,13 +24,24 @@ ob_start();
 			?>
 		</nav>
 		<div id="outerWrapper">
-			<div id="innerWrapper" class="transisitionAllMed darkGradient"
+
 			<?php
-			if (isset($_SESSION['usr']) && !empty($_SESSION['usr'])) {
-				echo "style=\"margin-left: -1390px;\"";
-			}
+if (isset($_SESSION['usr']) && !empty($_SESSION['usr'])) {
 			?>
-			>
+			<script type="application/javascript">
+                renderInnerWrapper();
+                function renderInnerWrapper() {
+                    var windowWidth1015 = $(window).width() <= 1015, marVal = windowWidth1015 ? -1190 : -1390;
+                    document.write('<div id="innerWrapper" class="transisitionAllMed darkGradient" style="margin-left:' + marVal + 'px">');
+                }
+			</script>
+			<?php
+			} else {
+			?>
+			<div id="innerWrapper" class="transisitionAllMed darkGradient">
+				<?php
+				}
+				?>
 
 				<div class="gradient accentLine"></div>
 
@@ -85,110 +98,131 @@ ob_start();
 					</div>
 					<div class="table-row">
 						<div class="table-cell vMiddle textCenter">
-							<div class="table inlineBlock">
+							<div class="table inlineBlock" id="cbAttendance">
 								<div class="table-row">
 									<div class="table-cell">
-										<div class="checkbox big transisitionAllSuperFast" data-value="1" id="cbYes">
-											Ja
-										</div>
-									</div>
-								</div>
-								<div class="table-row">
-									<div class="table-cell">
-										<div class="checkbox small left transisitionAllSuperFast" data-value="0" id="cbNo">
-											Nein
-										</div>
-										<div class="checkbox small left transisitionAllSuperFast" data-value="2" id="cbMaybe">
-											Vielleicht
-										</div>
+										<?php
+										if ($attendance == 1) {
+											echo "<div class=\"checkbox big transisitionAllSuperFast checked\" data-value=\"1\" id=\"cbYes\">";
+										} else {
+											echo "<div class=\"checkbox big transisitionAllSuperFast\" data-value=\"1\" id=\"cbYes\">";
+										}
+										?>
+										<img class="cbLoading hidden left" src="assets/img/ajax_loader_bars.gif" />
+										Ja
 									</div>
 								</div>
 							</div>
+							<div class="table-row">
+								<div class="table-cell">
+									<?php
+									if ($attendance == 0) {
+										echo "<div class=\"checkbox small left transisitionAllSuperFast checked\" data-value=\"0\" id=\"cbNo\">";
+									} else {
+										echo "<div class=\"checkbox small left transisitionAllSuperFast\" data-value=\"0\" id=\"cbNo\">";
+									}
+									?>
+									<img class="cbLoading hidden left" src="assets/img/ajax_loader_bars.gif" />
+									Nein
+								</div>
+								<?php
+								if ($attendance == 2) {
+									echo "<div class=\"checkbox small left transisitionAllSuperFast checked\" data-value=\"2\" id=\"cbMaybe\">";
+								} else {
+									echo "<div class=\"checkbox small left transisitionAllSuperFast\" data-value=\"2\" id=\"cbMaybe\">";
+								}
+								?>
+								<img class="cbLoading hidden left" src="assets/img/ajax_loader_bars.gif" />
+								Vielleicht
+							</div>
 						</div>
-					</div>
-					<div class="table-row">
-						<div class="table-cell"></div>
-					</div>
-					<div class="content_bg_wrapper">
-						<div class="content_bg"></div>
-					</div>
-				</div>
-
-				<!-- Versorgung -->
-				<div class="content left table" id="ctnProvision">
-					<div class="introText">
-						<div class="header">
-							Fressen, Saufen, Feiern!
-						</div>
-						<div class="content">
-							Was wir alles bereitstellen werden:
-							<ul>
-								<li>
-									25kg Spanferkel
-								</li>
-								<li>
-									2x 30l Fassbier
-								</li>
-								<li>
-									Diverse Kästen Bier
-								</li>
-								<li>
-									Cola, Fanta, Sprite
-								</li>
-								<li>
-									Orangensaft
-								</li>
-								<li>
-									Wasser
-								</li>
-							</ul>
-							Was von euch mitgebracht werden muss
-							<ul>
-								<li>
-									Schnaps
-								</li>
-								<li>
-									Spezielles
-								</li>
-								<li>
-									Exotisches
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="table-row"></div>
-					<div class="table-row">
-						<div class="table-cell"></div>
-					</div>
-					<div class="content_bg_wrapper">
-						<div class="content_bg"></div>
-					</div>
-				</div>
-
-				<!-- Anfahrt -->
-				<div class="content left" id="ctnLocation">
-					<div class="introText">
-						Hier teilst du uns mit, ob du zur Feier kommen wirst.
-						<br />
-						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
-					</div>
-					<div class="content_bg_wrapper">
-						<div class="content_bg"></div>
-					</div>
-				</div>
-
-				<!-- Unterbringung -->
-				<div class="content left" id="ctnAccommodation">
-					<div class="introText">
-						Hier teilst du uns mit, ob du zur Feier kommen wirst.
-						<br />
-						Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
-					</div>
-					<div class="content_bg_wrapper">
-						<div class="content_bg"></div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="table-row">
+			<div class="table-cell"></div>
+		</div>
+		<div class="content_bg_wrapper">
+			<div class="content_bg"></div>
+		</div>
+		</div>
+
+		<!-- Versorgung -->
+		<div class="content left table" id="ctnProvision">
+			<div class="introText">
+				<div class="header">
+					Fressen, Saufen, Feiern!
+				</div>
+				<div class="content">
+					Was wir alles bereitstellen werden:
+					<ul>
+						<li>
+							25kg Spanferkel
+						</li>
+						<li>
+							2x 30l Fassbier
+						</li>
+						<li>
+							Diverse Kästen Bier
+						</li>
+						<li>
+							Cola, Fanta, Sprite
+						</li>
+						<li>
+							Orangensaft
+						</li>
+						<li>
+							Wasser
+						</li>
+					</ul>
+					Was von euch mitgebracht werden muss
+					<ul>
+						<li>
+							Schnaps
+						</li>
+						<li>
+							Spezielles
+						</li>
+						<li>
+							Exotisches
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="table-row"></div>
+			<div class="table-row">
+				<div class="table-cell"></div>
+			</div>
+			<div class="content_bg_wrapper">
+				<div class="content_bg"></div>
+			</div>
+		</div>
+
+		<!-- Anfahrt -->
+		<div class="content left" id="ctnLocation">
+			<div class="introText">
+				Hier teilst du uns mit, ob du zur Feier kommen wirst.
+				<br />
+				Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+			</div>
+			<div class="content_bg_wrapper">
+				<div class="content_bg"></div>
+			</div>
+		</div>
+
+		<!-- Unterbringung -->
+		<div class="content left" id="ctnAccommodation">
+			<div class="introText">
+				Hier teilst du uns mit, ob du zur Feier kommen wirst.
+				<br />
+				Solltest du dabei sein, hast du die Möglichkeit, jemanden mitzubringen. Diese Person wird daraufhin eine E-Mail mit den entsprechenden Zugangsdaten erhalten.
+			</div>
+			<div class="content_bg_wrapper">
+				<div class="content_bg"></div>
+			</div>
+		</div>
+		</div>
 		</div>
 	</body>
 </html>

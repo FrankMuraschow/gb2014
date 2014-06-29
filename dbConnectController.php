@@ -90,13 +90,11 @@ class dbConnectController {
 		if (!isset($_SESSION['usr']) || empty($_SESSION['usr']))
 			return -1;
 
-		$query = "UPDATE " . conf::TBL_USR . "SET `will_participate` =  '" . $val . "' WHERE  `username` =  '" . $_SESSION['usr'] . "'";
-		$result = $this -> connection -> query($query);
-		return $result;
+		$query = "UPDATE " . conf::TBL_USR . " SET `will_participate` =  '" . $val . "' WHERE  " . conf::USR_NAME . " =  '" . $_SESSION['usr'] . "'";
+		$this -> connection -> query($query);
 	}
 
 	public function getAttendance() {
-		return var_dump($_SESSION);
 		if (!isset($_SESSION['usr']))
 			return -1;
 
@@ -177,9 +175,8 @@ function logoutUser() {
 
 function setAttendance($val) {
 	$db = new dbConnectController();
-	$result = $db -> setAttendance($val);
+	$db -> setAttendance($val);
 	$db -> closeConnection();
-	return $result;
 }
 
 function getAttendance() {
@@ -191,6 +188,19 @@ function getAttendance() {
 		}
 	}
 	$db -> closeConnection();
+}
+
+function getAttendanceValue() {
+	$db = new dbConnectController();
+	$result = $db -> getAttendance();
+	$value = -1;
+	if ($result) {
+		while ($row = $result -> fetch_assoc()) {
+			$value = $row['will_participate'];
+		}
+	}
+	$db -> closeConnection();
+	return $value;
 }
 
 function generateSalt($max = 32) {
