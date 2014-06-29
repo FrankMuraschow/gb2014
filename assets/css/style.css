@@ -60,7 +60,7 @@ body {
 
 div#bgOverlay {
 	background: no-repeat 0 0 rgba(0,0,0,1);
-	position: fixed                                      :
+	position: fixed                                        :
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -865,6 +865,31 @@ a, a:visited, a:hover, a:visited:hover {
 .googleMapsCell {
 	padding-top: 200px;
 	width: 1000px;
+}
+
+fieldset {
+	color: #111;
+}
+
+.label {
+	float: left;
+}
+
+span.notChoosen {
+	color: #111;
+}
+span.isNotAttending {
+	color: #d00;
+}
+span.isAttending {
+	color: #0d0;
+}
+span.maybe {
+	color: #00d;
+}
+table.admTable {
+	text-align: left;
+	color: #111;
 }
 
 @media all and (max-width: 1015px) {
