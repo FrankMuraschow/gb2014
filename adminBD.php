@@ -58,7 +58,7 @@ ob_start();
                                 pw : tbNewUserPasswordOneValue
                             })
                         }).done(function(result) {
-                            adminMessageadminMessage(result);
+                            adminMessage(result);
                         }).fail(function(result) {
                             adminMessage(result.statusText);
                         }).always(function() {

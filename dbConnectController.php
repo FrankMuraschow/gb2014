@@ -7,7 +7,7 @@ session_start();
 if (isset($_POST['action']) && !empty($_POST['action'])) {
 	$action = $_POST['action'];
 
-	switch($action) {
+	switch ($action) {
 		case 'validateUser' :
 			validateUser($_POST['usr'], $_POST['pw']);
 			break;
@@ -43,9 +43,6 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 			break;
 	}
 }
-?>
-
-<?php
 
 class dbConnectController {
 
@@ -93,7 +90,7 @@ class dbConnectController {
 
 	public function getUserByFullName($firstName, $lastName, $usr) {
 		$usr = strtolower($usr);
-		$query = "SELECT * FROM " . conf::TBL_USR . " WHERE (" . conf::USR_NAME . " = '$usr') OR (" . conf::USR_FNAME . " = '$firstName' AND " . conf::USR_LNAME . " = '$lastName')";		
+		$query = "SELECT * FROM " . conf::TBL_USR . " WHERE (" . conf::USR_NAME . " = '$usr') OR (" . conf::USR_FNAME . " = '$firstName' AND " . conf::USR_LNAME . " = '$lastName')";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -107,7 +104,7 @@ class dbConnectController {
 
 	public function getUsers() {
 		$usr = strtolower($usr);
-		$query = "SELECT * FROM " . conf::TBL_USR . " ORDER BY  " . conf::USR_NAME . " ASC ";
+		$query = "SELECT * FROM " . conf::TBL_USR . " ORDER BY  " . conf::USR_FNAME . " ASC ";
 		$result = $this -> connection -> query($query);
 		return $result;
 	}
@@ -190,10 +187,12 @@ class dbConnectController {
 // }
 
 function validateUser($usr, $pw) {
-	if (empty($usr)) { echo "USR empty";
+	if (empty($usr)) {
+		echo "USR empty";
 		return;
 	}
-	if (empty($pw)) { echo "PW empty";
+	if (empty($pw)) {
+		echo "PW empty";
 		return;
 	}
 
@@ -221,10 +220,12 @@ function validateUser($usr, $pw) {
 
 function validateAdmin($usr, $pw) {
 	$_SESSION['is_adm'] = 0;
-	if (empty($usr)) { echo "USR empty";
+	if (empty($usr)) {
+		echo "USR empty";
 		return;
 	}
-	if (empty($pw)) { echo "PW empty";
+	if (empty($pw)) {
+		echo "PW empty";
 		return;
 	}
 
@@ -259,7 +260,7 @@ function validateAdmin($usr, $pw) {
 					$resultTable .= "<tr><td>" . $row['first_name'] . " " . $row['last_name'] . "</td><td>";
 					$options .= "<option value=\"" . $row['username'] . "\">" . $row['first_name'] . " " . $row['last_name'] . "</option>";
 
-					switch($row['will_participate']) {
+					switch ($row['will_participate']) {
 						case -1 :
 							$notChoosen++;
 							$resultTable .= "<span class=\"notChoosen\">Nicht gew&auml;hlt</span>";
@@ -291,15 +292,13 @@ function validateAdmin($usr, $pw) {
 				echo "</table>";
 				echo "</fieldset>";
 
-				//outer table
 				echo "</td><td class=\"overview\">";
 				echo "<fieldset><legend>Übersicht</legend>";
 				echo $resultTable;
 				echo "</fieldset>";
 
-				//outer table
-				//echo "</td><td class=\"newUser\">";
-				//echo conf::UI_TBL_NEW_USER;
+				echo "</td><td class=\"newUser\">";
+				echo conf::UI_TBL_NEW_USER;
 
 				//outer table
 				//echo "</td><td class=\"changeUser\">";
@@ -332,6 +331,19 @@ function addNewUser($fn, $ln, $un, $pw) {
 		header('HTTP/1.0 500 User already exists');
 		echo "User already exists!";
 		exit ;
+	} else {
+		$salt = generateSalt();
+		$pw = md5($salt . $pw);
+
+		if (!mb_detect_encoding($fn, 'UTF-8', true)) {
+			$fn = utf8_encode($fn);
+		}
+
+		if (!mb_detect_encoding($ln, 'UTF-8', true)) {
+			$ln = utf8_encode($ln);
+		}
+		
+		$db -> createUsernameAndSalt($un, $fn, $ln, $pw, $salt);		
 	}
 
 	$db -> closeConnection();
@@ -406,14 +418,15 @@ function getEmailValue() {
 	return $value;
 }
 
-// function generateSalt($max = 32) {
-// $characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
-// $i = 0;
-// $salt = "";
-// while ($i < $max) {
-// $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
-// $i++;
-// }
-// return $salt;
-// }
+function generateSalt($max = 32) {
+	$characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
+	$i = 0;
+	$salt = "";
+	while ($i < $max) {
+		$salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
+		$i++;
+	}
+
+	return $salt;
+}
 ?>

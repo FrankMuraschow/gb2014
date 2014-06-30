@@ -193,8 +193,11 @@ jQuery(function($) {"use strict";
                         result = $.trim(result);
                         $('nav').prepend(result);
                         showNav().always(function() {
-                            $('#pwLoader').addClass('hidden');
                             $('#btnPassword').on('click', btnPassWordClick).removeClass('loading');
+
+                            window.setTimeout(function() {
+                                $('#pwLoader').addClass('hidden');
+                            }, 2000);
                         });
                     });
                 }).fail(function(result) {
@@ -202,7 +205,10 @@ jQuery(function($) {"use strict";
                         distance : 10,
                         times : 2
                     });
-                    $('#pwLoader').addClass('hidden');
+
+                    window.setTimeout(function() {
+                        $('#pwLoader').addClass('hidden');
+                    }, 2000);
                     $('#btnPassword').on('click', btnPassWordClick).removeClass('loading');
                 })
             }
@@ -247,7 +253,10 @@ jQuery(function($) {"use strict";
                     tbEmail.addClass('error');
                 }).always(function() {
                     $('#btnEmail').on('click', btnEmailClick).removeClass('loading');
-                    $('#emailLoader').addClass('hidden');
+
+                    window.setTimeout(function() {
+                        $('#emailLoader').addClass('hidden');
+                    }, 2000);
                 });
             }
         }
@@ -267,9 +276,11 @@ jQuery(function($) {"use strict";
                         val : checkedVal
                     })
                 }).done(function() {
-                    cbLoader.addClass('hidden');
                     $('.checkbox.checked').removeClass('checked').addClass('pointer');
                     that.addClass('checked');
+                    window.setTimeout(function() {
+                        cbLoader.addClass('hidden');
+                    }, 2000);
                 }).always(function() {
                     $('#cbAttendance').find('.checkbox').not('.checked').on('click', cbAttendanceClick);
                 });
